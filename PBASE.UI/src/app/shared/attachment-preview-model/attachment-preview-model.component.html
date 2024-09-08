@@ -1,0 +1,19 @@
+<div class="card form-card mb-0">
+  <div class="card-header">
+    Preview
+  </div>
+
+  <div class="card-block">
+    <p *ngIf="isLoading"> Loading....</p>
+    <iframe class="image-preview"
+            *ngIf="safeSrc != null" [src]="safeSrc"></iframe>
+  </div>
+
+  <div class="card-footer">
+    <div class="row">
+      <div class="col text-right">
+        <button class="btn btn-default btn-primary submit" type="button" (click)="close('close')">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>

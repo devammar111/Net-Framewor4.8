@@ -1,0 +1,42 @@
+<div class="mb-10">
+  <div class="row">
+    <div class="col-lg-3">
+      <div class="form-group mb-0">
+        <label for="StartDate" class="mb-1">Start Date<span class="required-denote">*</span> </label>
+        <div class="input-group" (clickOutside)="StartDatePicker.close()" [ngClass]="{'has-danger': StartDate?.errors?.required}">
+          <input class="form-control" #StartDate="ngModel" placeholder="dd/mm/yyyy" #StartDatePicker="ngbDatepicker" id="StartDate" name="StartDate" [(ngModel)]="StartDateField" ngbDatepicker [ngClass]="{'is-invalid': StartDate?.invalid}">
+          <div class="input-group-append">
+            <button class="btn" (click)="StartDatePicker.toggle()" type="button"><i class="far fa-calendar-alt"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="form-group mb-0">
+        <label for="EndDate" class="mb-1">End Date<span class="required-denote">*</span></label>
+        <div class="input-group" (clickOutside)="EndDatePicker.close()" [ngClass]="{'has-danger': EndDate?.errors?.required}">
+          <input class="form-control" #EndDate="ngModel" placeholder="dd/mm/yyyy" #EndDatePicker="ngbDatepicker" id="EndDate" name="EndDate" [(ngModel)]="EndDateField" ngbDatepicker [ngClass]="{'is-invalid': EndDate?.invalid}">
+          <div class="input-group-append">
+            <button class="btn" (click)="EndDatePicker.toggle()" type="button"><i class="far fa-calendar-alt"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="form-group mb-0">
+        <label class="d-block">&nbsp;</label>
+        <button type="button" class="btn btn-success" [disabled]="!StartDate?.valid || !EndDate?.valid || (!StartDateField || !EndDateField)" [ladda]="isSearching" (click)="search()">Search</button>
+        <button type="button" [disabled]="isReadonly" class="btn btn-success" [ladda]="isReseting" (click)="reset()">Reset</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card form-card">
+  <div class="card-header">
+    <span class="fa fa-table"></span>Login Analysis
+  </div>
+  <div class="card-body">
+    <div #vw_AspNetUserLogsGrid style="width: 100%;" class="ag-fresh"></div>
+  </div>
+</div>

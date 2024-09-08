@@ -1,0 +1,24 @@
+<div class="d-flex align-items-stretch min-height-100">
+  <div class="bg-cover bg-1 hidden-md-down d-none d-md-flex vh-100 col-md-6 col-lg-9 col-xl-9"></div>
+  <div class="card card-block mb-0 rounded-0 p-5 col-sm-12 col-md-6  col-lg-3 col-xl-3">
+    <div class="logo">
+      <span class="db img-fluid"><img src="assets/images/logo-header.png" alt="logo" /></span>
+      <p>THANK YOU FOR REGISTRATION HERE!</p>
+    </div>
+
+    <div class="auth-box auth-panel">
+      <div class="has-danger"><p class="form-control-feedback"></p></div>
+
+      <div class="form-group text-center">
+        <label>
+          <b>{{email ? 'Please check email at (' + email + ') for further information': "email not found"}}</b>
+        </label>
+      </div>
+
+    </div>
+
+    <div class="form-group text-center">
+      <a [routerLink]="['/authentication/login']" class="text-dark">Go to login </a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+<form>
+  <div class="card form-card mb-0">
+    <div class="card-header">
+      <h3 class="card-title text-white text-center">{{ title }}</h3>
+      <button *ngIf="!isButtonShow" type="button" class="close confirm-close" aria-label="Close" (click)="dismiss()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="card-block" [innerHTML]="message">
+    </div>
+    <div *ngIf="isButtonShow" class="text-right card-footer">
+      <button type="button" class="btn btn-primary saveDial" (click)="accept()">{{ btnOkText }}</button>
+      <button type="button" class="btn btn-dark" (click)="decline()">{{ btnCancelText }}</button>
+    </div>
+  </div>
+</form>

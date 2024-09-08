@@ -1,0 +1,70 @@
+<ngx-loading [show]="(data | json) == '{}'"></ngx-loading>
+<div class="card form-card">
+  <div class="card-header">
+    {{heading}}
+  </div>
+  <div class="card-block">
+    <form novalidate #AgreementForm="ngForm">
+      <app-unsaved-changes [formName]="AgreementForm"></app-unsaved-changes>
+      <div class="row">
+        <div class="col-lg-3">
+          <div class="form-group" [ngClass]="{'has-danger': AgreementHeader?.errors?.required}">
+            <label for="agreementHeader">Agreement Header<span class="required-denote">*</span></label>
+            <input trim="blur" type="text" required maxlength="200" [(ngModel)]="data.AgreementHeader" name="agreementHeader" #AgreementHeader="ngModel" class="form-control" [disabled]="queryParams.id">
+          </div>
+          <div class="form-group" [ngClass]="{'has-danger': VersionNo?.errors?.required}">
+            <label for="VersionNo">Version No<span class="required-denote">*</span></label>
+            <input trim="blur" type="text" [disabled]="queryParams.id" pattern="^[0-9]{1,15}(?:\.[0-9]{1,1})?$" required maxlength="200" [(ngModel)]="data.VersionNo" name="VersionNo" #VersionNo="ngModel" class="form-control">
+          </div>
+          <!--<div class="form-group" *ngIf="queryParams.id">
+            <label for="IsArchived">Archived ?</label>
+            <ng-select [selectOnTab]="true" [disabled]="queryParams.id" [items]="Lockouts" id="IsArchived" name="IsArchived" #IsArchived="ngModel" bindLabel="LookupValue" bindValue="LookupId" [(ngModel)]="data.IsArchived">
+            </ng-select>
+          </div>
+          <div class="form-group" [ngClass]="{'has-danger': UserTypeId?.errors?.required}">
+            <label for="UserTypeId">User Type <span class="required-denote">*</span></label>
+            <ng-select [selectOnTab]="true" [disabled]="queryParams.id" [items]="data.vw_lookupRole" bindLabel="LookupValue" bindValue="LookupId" groupBy="GroupBy" required [multiple]="true" [hideSelected]="true" [(ngModel)]="data.AgreementUserTypeIds" id="UserTypeId" #UserTypeId="ngModel" name="UserTypeId">
+            </ng-select>
+          </div>-->
+          <div class="form-group" [ngClass]="{'has-danger': AgreementDate?.errors?.required}">
+            <label for="AgreementDate">Agreement Date<span class="required">*</span></label>
+            <div class="input-group" (clickOutside)="AgreementDatePicker.close()">
+              <input class="form-control" [disabled]="queryParams.id" #AgreementDate="ngModel" required placeholder="dd/mm/yyyy" #AgreementDatePicker="ngbDatepicker" id="AgreementDate" name="AgreementDate" [(ngModel)]="AgreementDateField" ngbDatepicker [ngClass]="{'is-invalid': AgreementDate?.invalid}">
+              <div class="input-group-append">
+                <button class="btn" (click)="AgreementDatePicker.toggle()" type="button"><i class="far fa-calendar-alt"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-9">
+          <div class="form-group" [ngClass]="{'has-danger': AgreementText?.errors?.required}">
+            <label for="AgreementText">Agreement Text<span class="required-denote">*</span></label>
+            <angular-editor required disabled id="AgreementText" name="AgreementText" #AgreementText="ngModel" [(ngModel)]="data.AgreementText" [config]="editorConfig"></angular-editor>
+          </div>
+        </div>
+      </div>
+
+
+    </form>
+  </div>
+</div>
+
+<footer class="panel-footer text-right bg-light lter">
+  <div class="float-left">
+    <small class="required">* denotes required field</small>
+  </div>
+  <button type="button" class="btn btn-success" [hidden]="appInfo.isReadonly && !appInfo.isUserReadonly" [disabled]="!AgreementForm.form.valid" [ladda]="isSaving" (click)="submit(AgreementForm.form.valid)">Save</button>
+  <button class="btn btn-danger"
+          [disabled]="appInfo.isUserReadonly"
+          [hidden]="!queryParams.id || appInfo.isDeleteHidden"
+          [ladda]="isDeleting"
+          mwlConfirmationPopover
+          popoverTitle="Delete Agreement"
+          popoverMessage="Are you sure you want to delete this Agreement?"
+          placement="top"
+          (confirm)="delete()"
+          (cancel)="true">
+    Delete
+  </button>
+  <button type="button" class="btn btn-dark" (click)="goBack()">Cancel</button>
+</footer>

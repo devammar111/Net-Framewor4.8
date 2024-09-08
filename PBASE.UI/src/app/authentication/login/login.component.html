@@ -1,0 +1,44 @@
+<div class="login-page h-100 w-100">
+  <div class="container h-100">
+    <div class="row justify-content-md-center h-100">
+      <div class="col-sm-12 col-md-8 col-lg-7 col-xl-6 align-self-center">
+
+        <div class="card card-block mb-0 p-5">
+          <div class="logo">
+            <img src="../../../assets/images/logo-light-text.png" alt="logo" />
+          </div>
+          <div class="auth-box auth-panel">
+            <p class="text-center">Enter your email address and<br />password to login.</p>
+            <div class="has-danger">
+              <p class="form-control-feedback">{{error}}</p>
+            </div>
+            <form class="form-horizontal" [formGroup]="form" (ngSubmit)="onSubmit()">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1"><i class="fa fa-envelope envelop-style"></i></span>
+                </div>
+                <input trim="blur" type="text" class="form-control form-control-lg" [formControl]="form.controls['uname']" placeholder="Username" [ngClass]="{'is-invalid': form.controls['uname'].hasError('required')}">
+              </div>
+
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon2"><i class="fa fa-lock lock-style"></i></span>
+                </div>
+                <input trim="blur" type="password" class="form-control form-control-lg" [formControl]="form.controls['password']" placeholder="Password" [ngClass]="{'is-invalid': form.controls['password'].hasError('required')}">
+              </div>
+
+              <div class="form-group text-center mb-0">
+                <button class="btn btn-block btn-lg btn-custom" type="submit" [ladda]="isLoading" [disabled]="!form.valid">Login</button>
+              </div>
+
+              <div class="form-group text-center mb-0">
+                <a [routerLink]="['/authentication/forgot-password']" id="to-recover" class="link-style text-black">I've forgotten my password</a>
+              </div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

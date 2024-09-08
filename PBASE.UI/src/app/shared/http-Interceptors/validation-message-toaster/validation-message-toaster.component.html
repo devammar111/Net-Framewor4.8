@@ -1,0 +1,24 @@
+<button aria-label="Close" class="toast-close-button ng-tns-c9-0 ng-star-inserted"><span class="ng-tns-c9-0 fas fa-times" aria-hidden="true"></span></button>
+<div (click)="stop($event)">
+  <div class="toast-title ng-star-inserted" aria-label="Validation Error!" style=""> {{ title }} </div>
+  <div aria-live="polite" role="alertdialog" class="toast-message ng-star-inserted" style="">
+    <ng-container *ngIf="isMessage">
+      <div><span>{{message}}</span></div>
+    </ng-container>
+    <ng-container *ngIf="!isMessage">
+      <div class="error-message" *ngFor="let item of message; let i = index">
+        <span>{{  formate(item, i) }}</span>
+        <button *ngIf="showButton[i]" (click)="expand(i, item, message, $event)" class="btn-info-circle"><i class="fas fa-info-circle"></i></button><br>
+        <div class="mt-10 mb-10" *ngIf="show[i] && messages.length>0">
+          <div class="srcipt-error">
+            <b>Invalid text you entered:</b>{{messages[i].TextInvalid}}<br />
+          </div>
+          <div class="app-error">
+            <b>Invalid text of App:</b><br />
+            {{messages[i].AppInvalid}}
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>

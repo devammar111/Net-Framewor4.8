@@ -1,0 +1,46 @@
+
+
+<ngx-loading [show]="(data | json) == '{}'"></ngx-loading>
+<form novalidate #testSubForm="ngForm">
+  <app-unsaved-changes [formName]="testSubForm"></app-unsaved-changes>
+  <div class="card form-card">
+    <div class="card-header">
+      {{heading}}
+    </div>
+    <div class="card-block">
+      <div class="row">
+        <div class="col-lg-3">
+          <div class="form-group" [ngClass]="{'has-danger': TestNoteTypeId?.errors?.required}">
+            <label for="TestNoteTypeId"><span class="required-denote">*</span>Test Note Type</label>
+            <ng-select [selectOnTab]="true" [items]="data.vw_LookupTestType" bindLabel="LookupValue" bindValue="LookupId" groupBy="GroupBy" [(ngModel)]="data.TestNoteTypeId" #TestNoteTypeId="ngModel" name="TestNoteTypeId" required>
+            </ng-select>
+          </div>
+          <div class="form-group" [ngClass]="{'has-danger': TestNoteText?.errors?.required}">
+            <label for="TestNoteText">Test Note<span class="required-denote">*</span></label>
+            <input trim="blur" type="text" maxlength="10" [(ngModel)]="data.TestNoteText" name="TestNoteText" #TestNoteText="ngModel" class="form-control" required>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+<footer class="panel-footer text-right bg-light lter">
+  <div class="float-left">
+    <small class="required">* denotes required field</small>
+  </div>
+  <button type="button" class="btn btn-success" [hidden]="appInfo.isReadonly && !appInfo.isUserReadonly" [disabled]="!testSubForm.form.valid" [ladda]="isSaving" (click)="submit(testSubForm.form.valid)">Save</button>
+  <button class="btn btn-danger"
+          [disabled]="appInfo.isUserReadonly"
+          [hidden]="!queryParams.id || appInfo.isDeleteHidden"
+          [ladda]="isDeleting"
+          mwlConfirmationPopover
+          popoverTitle="Delete Template"
+          popoverMessage="Are you sure you want to delete this test note?"
+          placement="top"
+          (confirm)="delete()"
+          (cancel)="true">
+    Delete
+  </button>
+  <button type="button" class="btn btn-dark" (click)="goBack()">Cancel</button>
+</footer>

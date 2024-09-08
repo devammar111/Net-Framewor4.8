@@ -1,0 +1,125 @@
+<div class="card form-card">
+  <div class="card-header">
+    <span class="fa fa-globe"></span>Objects
+  </div>
+  <div class="card-block">
+    <div class="row justify-content-between p-0">
+      <div class="col-12 col-sm-6">
+        <button #btnBulkEdit *ngIf="!IsEdited && !appInfo.isReadonly" class="btn btn-success btn-addon mt-0 mb-0" (click)="onBulkEdit(true)"><i class="fa fa-pencil-alt fa-fw m-r-xs"></i> Edit Records</button>
+        <!--Search Field-->
+      </div>
+      <div class="col-12 col-sm-6">
+        <div class="input-group mb-3 zindex-1 form-group">
+          <input class="form-control mt-0 mb-0" type="text"
+                 style="padding:8px;margin:15px auto;width:30%;"
+                 placeholder="Search..."
+                 (keyup)="updateFilter($event)" />
+
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button" id="button-addon2">
+              <i class="fa fa-search"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--Table Rows-->
+
+    <div class="responsive-datatable">
+      <ngx-datatable #pbTable
+                     class="material"
+                     [headerHeight]="tableOptions.HeaderHeight"
+                     [footerHeight]="tableOptions.FooterHeight"
+                     [columnMode]="tableOptions.ColumnMode"
+                     [rowHeight]="tableOptions.RowHeight"
+                     [rows]="rows"
+                     [rowClass]="getRowClass" id="objectTable" [perfectScrollbar]="config">
+
+        <ngx-datatable-column prop="ObjectNameText" name="Object Name" [sortable]="false">
+          <ng-template ngx-datatable-cell-template
+                       let-rowIndex="rowIndex"
+                       let-value="value"
+                       let-row="row">
+            <span>
+              {{row.ObjectName}}
+            </span>
+          </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column prop="ObjectTypeText" name="Object Type" [sortable]="false">
+          <ng-template ngx-datatable-cell-template
+                       let-rowIndex="rowIndex"
+                       let-value="value"
+                       let-row="row">
+            <span [ngClass]="{'getRowClass' : row.ObjectType}">
+              {{row.ObjectType}}
+            </span>
+          </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column prop="MenuNameText" name="Menu Name" [sortable]="false">
+          <ng-template ngx-datatable-cell-template
+                       let-rowIndex="rowIndex"
+                       let-value="value"
+                       let-row="row">
+            <span>
+              {{row.MenuName}}
+            </span>
+          </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column prop="AccessType" name="Access Type" [sortable]="false" [width]="200">
+          <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+            <span *ngIf="!IsEdited">
+              {{row.AccessType}}
+            </span>
+            <ng-select [selectOnTab]="true"
+                       *ngIf="IsEdited && row.LookupExtraInt == -9977"
+                       [items]="data.vw_LookupAccessTypeMenue"
+                       bindLabel="LookupValue"
+                       bindValue="LookupId"
+                       groupBy="GroupBy"
+                       class=""
+                       placeholder="Access Type"
+                       [(ngModel)]="row.AccessTypeId"
+                       [id]="'AccessTypeId' + row.AccessTypeId + rowIndex"
+                       [name]="'AccessTypeId' + row.AccessTypeId + rowIndex"
+                       (change)="onCellChanged(row)">
+            </ng-select>
+            <ng-select [selectOnTab]="true"
+                       *ngIf="IsEdited && (row.LookupExtraInt == -9976 || row.LookupExtraInt == -9975 || row.LookupExtraInt == -9974)"
+                       [items]="data.vw_LookupAccessTypeTab"
+                       bindLabel="LookupValue"
+                       bindValue="LookupId"
+                       groupBy="GroupBy"
+                       class=""
+                       placeholder="Access Type"
+                       [(ngModel)]="row.AccessTypeId"
+                       [id]="'AccessTypeId' + row.AccessTypeId + rowIndex"
+                       [name]="'AccessTypeId' + row.AccessTypeId + rowIndex"
+                       (change)="onCellChanged(row)">
+            </ng-select>
+            <ng-select [selectOnTab]="true"
+                       *ngIf="IsEdited && row.LookupExtraInt == -9973"
+                       [items]="data.vw_LookupAccessTypeButton"
+                       bindLabel="LookupValue"
+                       bindValue="LookupId"
+                       groupBy="GroupBy"
+                       class=""
+                       placeholder="Access Type"
+                       [(ngModel)]="row.AccessTypeId"
+                       [id]="'AccessTypeId' + row.AccessTypeId + rowIndex"
+                       [name]="'AccessTypeId' + row.AccessTypeId + rowIndex"
+                       (change)="onCellChanged(row)">
+            </ng-select>
+          </ng-template>
+        </ngx-datatable-column>
+      </ngx-datatable>
+    </div>
+  </div>
+
+  <div *ngIf="IsEdited" class="card-footer text-right">
+    <button type="button" class="btn btn-success" (click)="onUpdateRows()">Save</button>
+    <button type="button" class="btn btn-default" (click)="onCancel()">Cancel</button>
+  </div>
+</div>

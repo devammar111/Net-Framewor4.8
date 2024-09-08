@@ -1,0 +1,91 @@
+<ngx-loading [show]="(data | json) == '{}'"></ngx-loading>
+<div class="card form-card">
+  <div class="card-header">
+    {{heading}}
+  </div>
+  <div class="card-block">
+    <form novalidate #SystemAlertsForm="ngForm">
+      <app-unsaved-changes [formName]="SystemAlertsForm"></app-unsaved-changes>
+      <div class="row">
+        <div class="col-lg-3">
+          <div class="form-group" [ngClass]="{'has-danger': AlertTypeId ?.errors?.required}">
+            <label for="AlertTypeId ">Alert Type <span class="required-denote">*</span></label>
+            <ng-select [selectOnTab]="true" [items]="data.vw_LookupAlertType" required bindLabel="LookupValue" groupBy="GroupBy" bindValue="LookupId" [(ngModel)]="data.AlertTypeId " #AlertTypeId="ngModel" name="AlertTypeId">
+            </ng-select>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label" for="ClosedDateTime">Active/Close Date & Time </label>
+            <div class="input-group">
+              <input class="form-control" placeholder="Date & Time:" [(ngModel)]="ClosedDateTimeField" [owlDateTime]="ClosedDateTime" id="ClosedDateTime" name="ClosedDateTime" #ClosedDateTime="ngModel">
+              <div class="input-group-append">
+                <button class="btn" [owlDateTimeTrigger]="ClosedDateTime" type="button"><i class="far fa-calendar-alt"></i></button>
+              </div>
+              <owl-date-time [pickerMode]="'dialog'" [hour12Timer]="false" #ClosedDateTime></owl-date-time>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label" for="OpenDateTime">Deactive/Open Date & Time </label>
+            <div class="input-group">
+              <input class="form-control" placeholder="Date & Time:" [(ngModel)]="OpenDateTimeField" [owlDateTime]="OpenDateTime" id="OpenDateTime" name="OpenDateTime" #OpenDateTime="ngModel">
+              <div class="input-group-append">
+                <button class="btn" [owlDateTimeTrigger]="OpenDateTime" type="button"><i class="far fa-calendar-alt"></i></button>
+              </div>
+              <owl-date-time [pickerMode]="'dialog'" [hour12Timer]="false" #OpenDateTime></owl-date-time>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="WarningTime">Warning Time (Minutes)</label>
+            <input trim="blur" type="number" maxlength="100" [(ngModel)]="data.WarningTime" name="WarningTime" #WarningTime="ngModel" class="form-control">
+          </div>
+
+          <div class="form-group">
+            <label for="OpenMessageTime">Open Message Time (Minutes)</label>
+            <input trim="blur" type="number" maxlength="100" [(ngModel)]="data.OpenMessageTime" name="OpenMessageTime" #OpenMessageTime="ngModel" class="form-control">
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="form-group" [ngClass]="{'has-danger': AlertText?.errors?.required}">
+            <label for="AlertText">Alert Text <span class="required-denote">*</span> </label>
+            <angular-editor required id="AlertText" name="AlertText" #AlertText="ngModel" [(ngModel)]="data.AlertText" [config]="editorConfig"></angular-editor>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="form-group">
+            <label for="CloseText">Close Text </label>
+            <angular-editor id="CloseText" name="CloseText" #CloseText="ngModel" [(ngModel)]="data.CloseText" [config]="editorConfig"></angular-editor>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="form-group">
+            <label for="OpenText">Open Text </label>
+            <angular-editor id="OpenText" name="OpenText" #OpenText="ngModel" [(ngModel)]="data.OpenText" [config]="editorConfig"></angular-editor>
+          </div>
+        </div>
+      </div>
+
+
+    </form>
+  </div>
+</div>
+
+<footer class="panel-footer text-right bg-light lter">
+  <div class="float-left">
+    <small class="required">* denotes required field</small>
+  </div>
+  <button type="button" class="btn btn-success" [hidden]="appInfo.isReadonly && !appInfo.isUserReadonly" [disabled]="!SystemAlertsForm.form.valid" [ladda]="isSaving" (click)="submit(SystemAlertsForm.form.valid)">Save</button>
+  <button class="btn btn-danger"
+          [disabled]="appInfo.isUserReadonly"
+          [hidden]="!queryParams.id || appInfo.isDeleteHidden"
+          [ladda]="isDeleting"
+          mwlConfirmationPopover
+          popoverTitle="Delete System Alerts"
+          popoverMessage="Are you sure you want to delete this System Alerts?"
+          placement="top"
+          (confirm)="delete()"
+          (cancel)="true">
+    Delete
+  </button>
+  <button type="button" class="btn btn-dark" (click)="goBack()">Cancel</button>
+</footer>

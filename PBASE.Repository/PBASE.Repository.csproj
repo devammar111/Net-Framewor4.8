@@ -1,0 +1,239 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A9F879BC-CA11-4470-A655-8541B5DA41A1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PBASE.Repository</RootNamespace>
+    <AssemblyName>PBASE.Repository</AssemblyName>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Dev|AnyCPU'">
+    <OutputPath>bin\Dev\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Uat|AnyCPU'">
+    <OutputPath>bin\Uat\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Live|AnyCPU'">
+    <OutputPath>bin\Live\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.0.2\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.0.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Unity.3.0.1304.1\lib\Net45\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Unity.3.0.1304.1\lib\Net45\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Probase.GridHelper">
+      <HintPath>..\lib\Probase.GridHelper\Probase.GridHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Unity.AutoRegistration, Version=1.0.0.2, Culture=neutral, PublicKeyToken=35372f2f493f82ea, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\UnityAutoRegistration.1.0.0.2\lib\net35\Unity.AutoRegistration.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Agreement\UserAgreementRepository.cs" />
+    <Compile Include="Agreement\AgreementRepository.cs" />
+    <Compile Include="Agreement\AgreementUserTypeRepository.cs" />
+    <Compile Include="Agreement\vw_AgreementPreviousVersionNumberRepository.cs" />
+    <Compile Include="Agreement\vw_AgreementVersionSubGridRepository.cs" />
+    <Compile Include="Agreement\vw_UserAgreementFormRepository.cs" />
+    <Compile Include="Agreement\vw_UserAgreementSubGridRepository.cs" />
+    <Compile Include="Agreement\vw_AgreementUserSubGridRepository.cs" />
+    <Compile Include="Agreement\vw_AgreementGridRepository.cs" />
+    <Compile Include="EmailTemplate\EmailTemplateTagRepository.cs" />
+    <Compile Include="EmailTemplate\EmailTemplateRepository.cs" />
+    <Compile Include="EmailTemplate\vw_EmailTemplateGridRepository.cs" />
+    <Compile Include="Email\EmailAttachmentRepository.cs" />
+    <Compile Include="Email\ApplicationInformationRepository.cs" />
+    <Compile Include="Email\EmailRepository.cs" />
+    <Compile Include="Email\vw_EmailGridRepository.cs" />
+    <Compile Include="Infrastructure\FormatedList.cs" />
+    <Compile Include="Infrastructure\DataTablesParser.cs" />
+    <Compile Include="Infrastructure\DatabaseFactory.cs" />
+    <Compile Include="Infrastructure\Disposable.cs" />
+    <Compile Include="Infrastructure\IDatabaseFactory.cs" />
+    <Compile Include="Infrastructure\IRepository.cs" />
+    <Compile Include="Infrastructure\IUnitOfWork.cs" />
+    <Compile Include="Infrastructure\PagedResult.cs" />
+    <Compile Include="Infrastructure\RepositoryBase.cs" />
+    <Compile Include="Infrastructure\UnitOfWork.cs" />
+    <Compile Include="Lookup\InternalGridSettingDefaultRepository.cs" />
+    <Compile Include="Lookup\SafeIPsRepository.cs" />
+    <Compile Include="Lookup\TemplateTagRepository.cs" />
+    <Compile Include="Lookup\UserExportLogRepository.cs" />
+    <Compile Include="Lookup\UserAccountsRepository.cs" />
+    <Compile Include="Lookup\UserClaimsRepository.cs" />
+    <Compile Include="Lookup\InternalReportFieldRepository.cs" />
+    <Compile Include="Lookup\InterviewAppointmentRepository.cs" />
+    <Compile Include="Lookup\InternalReportRepository.cs" />
+    <Compile Include="Lookup\vw_LookupAccessTypeRepository.cs" />
+    <Compile Include="Lookup\vw_LookupSettingRepository.cs" />
+    <Compile Include="Lookup\vw_LookupDashboardObjectRepository.cs" />
+    <Compile Include="Lookup\vw_LookupDashboardObjectTypeRepository.cs" />
+    <Compile Include="Lookup\vw_LookupObjectRepository.cs" />
+    <Compile Include="Lookup\vw_LookupObjectTypeRepository.cs" />
+    <Compile Include="Lookup\vw_LookupAlertTypeRepository.cs" />
+    <Compile Include="Lookup\vw_LookupFromEmailAddressRepository.cs" />
+    <Compile Include="Lookup\vw_LookupDashboardOptionRepository.cs" />
+    <Compile Include="Lookup\vw_LookupDashboardOptionGroupRepository.cs" />
+    <Compile Include="Lookup\vw_LookupEmailTypeRepository.cs" />
+    <Compile Include="Lookup\vw_LookupGridTemplateAllowedTypeRepository.cs" />
+    <Compile Include="Lookup\vw_LookupGridEmailTypeRepository.cs" />
+    <Compile Include="Lookup\vw_LookupGridEmailTemplateTypeRepository.cs" />
+    <Compile Include="Lookup\vw_LookupGridUserGroupRepository.cs" />
+    <Compile Include="Lookup\vw_LookupGridUserAccessTypeRepository.cs" />
+    <Compile Include="Lookup\vw_LookupGridRoleRepository.cs" />
+    <Compile Include="Lookup\vw_LookupEmailTemplateTypeRepository.cs" />
+    <Compile Include="Lookup\vw_LookupTemplateAllowedTypeRepository.cs" />
+    <Compile Include="Lookup\vw_LookupGridAlertTypeRepository.cs" />
+    <Compile Include="Lookup\vw_LookupUserGroupRepository.cs" />
+    <Compile Include="Lookup\vw_LookupUserAccessTypeRepository.cs" />
+    <Compile Include="Lookup\vw_LookupTypeGridRepository.cs" />
+    <Compile Include="Lookup\vw_LookupMenuOptionRepository.cs" />
+    <Compile Include="Lookup\vw_LookupListRepository.cs" />
+    <Compile Include="Lookup\vw_LookupGridRepository.cs" />
+    <Compile Include="Lookup\vw_LookupGridUsersRepository.cs" />
+    <Compile Include="Lookup\vw_LookupGridUserTypeRepository.cs" />
+    <Compile Include="Lookup\vw_LookupRoleRepository.cs" />
+    <Compile Include="Lookup\vw_LookupTemplateTypeRepository.cs" />
+    <Compile Include="Lookup\vw_LookupUsersRepository.cs" />
+    <Compile Include="Lookup\vw_LookupUserTypeRepository.cs" />
+    <Compile Include="Lookup\vw_LookupUsersSignatureRepository.cs" />
+    <Compile Include="Lookup\vw_LookupMenuOptionGroupRepository.cs" />
+    <Compile Include="Lookup\vw_ExportLogGridRepository.cs" />
+    <Compile Include="Lookup\vw_TemplateGridRepository.cs" />
+    <Compile Include="Lookup\vw_MessageGridRepository.cs" />
+    <Compile Include="Lookup\vw_UserGridRepository.cs" />
+    <Compile Include="SystemAlert\SystemAlertRepository.cs" />
+    <Compile Include="SystemAlert\vw_SystemAlertGridRepository.cs" />
+    <Compile Include="SystemAlert\vw_SystemAlertMessagesRepository.cs" />
+    <Compile Include="SystemAlert\vw_SystemAlertIsClosedRepository.cs" />
+    <Compile Include="Test\TestSubRepository.cs" />
+    <Compile Include="Test\TestNoteAttachmentRepository.cs" />
+    <Compile Include="Test\TestNoteRepository.cs" />
+    <Compile Include="Test\TestRepository.cs" />
+    <Compile Include="Test\vw_LookupGridTestTypeRepository.cs" />
+    <Compile Include="Test\vw_LookupTestTypeRepository.cs" />
+    <Compile Include="Test\vw_TestNoteGridRepository.cs" />
+    <Compile Include="Test\vw_TestSubGridRepository.cs" />
+    <Compile Include="Test\vw_TestGridRepository.cs" />
+    <Compile Include="User\AspNetUsersInvalidRepository.cs" />
+    <Compile Include="User\UserGroupMenuOptionRepository.cs" />
+    <Compile Include="User\UserGroupDashboardOptionRepository.cs" />
+    <Compile Include="User\UserDashboardOptionRoleRepository.cs" />
+    <Compile Include="User\AspNetUserLogsRepository.cs" />
+    <Compile Include="User\vw_AspNetUserAccountLogsRepository.cs" />
+    <Compile Include="User\vw_AspNetUserLogsGridRepository.cs" />
+    <Compile Include="User\vw_InvalidEmailLogGridRepository.cs" />
+    <Compile Include="User\vw_UserGroupDashboardObjectSubGridRepository.cs" />
+    <Compile Include="User\vw_UserGroupObjectSubGridRepository.cs" />
+    <Compile Include="User\vw_UserGroupGridRepository.cs" />
+    <Compile Include="User\vw_UserDashboardOptionRepository.cs" />
+    <Compile Include="User\vw_UserMenuOptionRepository.cs" />
+    <Compile Include="User\vw_LookupUserRolesRepository.cs" />
+    <Compile Include="User\vw_LookupUserAssignedRolesRepository.cs" />
+    <Compile Include="User\vw_RoleGridRepository.cs" />
+    <Compile Include="User\vw_UserDashboardOptionRoleGridRepository.cs" />
+    <Compile Include="User\vw_UserMenuOptionRoleGridRepository.cs" />
+    <Compile Include="User\UserMenuOptionRoleRepository.cs" />
+    <Compile Include="User\UserGroupRepository.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="AppContext.cs" />
+    <Compile Include="Lookup\AttachmentRepository.cs" />
+    <Compile Include="Lookup\InternalFilterHeaderRepository.cs" />
+    <Compile Include="Lookup\InternalGridSettingRepository.cs" />
+    <Compile Include="Lookup\LookupRepository.cs" />
+    <Compile Include="Lookup\LookupTypeRepository.cs" />
+    <Compile Include="Lookup\MessageRepository.cs" />
+    <Compile Include="Lookup\TemplateRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PBASE.Entity\PBASE.Entity.csproj">
+      <Project>{48f672e8-4513-4f7e-a296-c0ccc87f9aa1}</Project>
+      <Name>PBASE.Entity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.13\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.13\tools\Microsoft.Bcl.Build.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

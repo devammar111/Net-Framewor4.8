@@ -1,0 +1,25 @@
+﻿<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" ></ngx-loading>
+<form  novalidate #termAndConditionForm="ngForm">
+  <div  *ngFor="let agreement of agreements; let i = index" [attr.data-index]="i">
+    <div *ngIf="i == indexNum" class="">
+      <div class="">
+        <span style="-moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none; -o-user-select:none;"
+              unselectable="on"
+              onselectstart="return false;"
+              onmousedown="return false;" innerHTML="{{agreement.AgreementText}}"></span>
+      </div>
+      <div class=" text-left">
+        <button type="button" [ladda]="isSaving" class="btn btn-info" (click)="accept(i)">Accept</button>
+        <button class="btn btn-danger" 
+                mwlConfirmationPopover
+                popoverTitle="Decline"
+                popoverMessage="If you decline then you will not be able to access the system"
+                placement="top"
+                (confirm)="decline(i)"
+                (cancel)="true">
+          Decline
+        </button>
+      </div>
+    </div>
+  </div>
+</form>

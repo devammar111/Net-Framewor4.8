@@ -1,0 +1,501 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A859840A-EF31-45AA-AF08-0805084660C7}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PBASE.WebAPI</RootNamespace>
+    <AssemblyName>PBASE.WebAPI</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+    <Use64BitIISExpress />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EPPlus, Version=4.0.4.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.4.0.4\lib\net20\EPPlus.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin.Cors, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Cors.3.0.1\lib\net45\Microsoft.Owin.Cors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.2.0.0\lib\net45-full\Ninject.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject.Web.Common, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Web.Common.3.2.0.0\lib\net45-full\Ninject.Web.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject.Web.Common.OwinHost, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Web.Common.OwinHost.3.2.3.0\lib\net45-full\Ninject.Web.Common.OwinHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject.Web.WebApi, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Web.WebApi.3.2.4.0\lib\net45-full\Ninject.Web.WebApi.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PGK.Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f93e897f802ddcb7, processorArchitecture=MSIL">
+      <HintPath>..\packages\PGK.Extensions.2011.6\lib\PGK.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Probase.GridHelper">
+      <HintPath>..\lib\Probase.GridHelper\Probase.GridHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Cors, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.3\lib\net45\System.Web.Cors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http.Cors, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Cors.5.2.3\lib\net45\System.Web.Http.Cors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivatorEx.2.0\lib\net40\WebActivatorEx.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.3.0.1\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.3.0.1\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.3.0.1\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.3.0.1\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Owin.5.2.3\lib\net45\System.Web.Http.Owin.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\NinjectWebCommon.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\Agreement\UserAgreementController.cs" />
+    <Compile Include="Controllers\Agreement\vw_AgreementVersionSubGridController.cs" />
+    <Compile Include="Controllers\Agreement\vw_UserAgreementFormController.cs" />
+    <Compile Include="Controllers\Agreement\AgreementController.cs" />
+    <Compile Include="Controllers\Agreement\vw_UserAgreementSubGridController.cs" />
+    <Compile Include="Controllers\Agreement\vw_AgreementUserSubGridController.cs" />
+    <Compile Include="Controllers\Agreement\vw_AgreementGridController.cs" />
+    <Compile Include="Controllers\Email\ApplicationInformationController.cs" />
+    <Compile Include="Controllers\Lookup\AttachmentDownloadController.cs" />
+    <Compile Include="Controllers\Lookup\InternalGridSettingDefaultController.cs" />
+    <Compile Include="Controllers\Lookup\vw_LookupAlertTypeController.cs" />
+    <Compile Include="Controllers\Lookup\vw_LookupAccessTypeController.cs" />
+    <Compile Include="Controllers\Lookup\vw_LookupGridTestTypeController.cs" />
+    <Compile Include="Controllers\Lookup\vw_LookupObjectTypeController.cs" />
+    <Compile Include="Controllers\Lookup\vw_LookupGridAlertTypeController.cs" />
+    <Compile Include="Controllers\Lookup\vw_LookupFromEmailAddressController.cs" />
+    <Compile Include="Controllers\RequestValidationController.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\EmailTemplate\EmailTemplateController.cs" />
+    <Compile Include="Controllers\EmailTemplate\vw_EmailTemplateGridController.cs" />
+    <Compile Include="Controllers\Email\EmailController.cs" />
+    <Compile Include="Controllers\Email\vw_EmailGridController.cs" />
+    <Compile Include="Controllers\ErrorLogController.cs" />
+    <Compile Include="Controllers\ExcelExportController.cs" />
+    <Compile Include="Controllers\GridStateController.cs" />
+    <Compile Include="Controllers\Lookup\InterviewAppointmentController.cs" />
+    <Compile Include="Controllers\Lookup\Database_DetailViewModel.cs" />
+    <Compile Include="Controllers\Lookup\InternalReportController .cs" />
+    <Compile Include="Controllers\Lookup\InternalGridSettingController.cs" />
+    <Compile Include="Controllers\Lookup\InternalFilterHeaderController .cs" />
+    <Compile Include="Controllers\Lookup\AttachmentController.cs" />
+    <Compile Include="Controllers\Lookup\LookupController.cs" />
+    <Compile Include="Controllers\Lookup\LookupTypeController.cs" />
+    <Compile Include="Controllers\Lookup\MessageController.cs" />
+    <Compile Include="Controllers\Lookup\vw_LookupEmailTypeController.cs" />
+    <Compile Include="Controllers\Lookup\vw_LookupEmailTemplateTypeController.cs" />
+    <Compile Include="Controllers\Lookup\vw_LookupGridTemplateAllowedTypeController.cs" />
+    <Compile Include="Controllers\Lookup\vw_LookupGridEmailTypeController.cs" />
+    <Compile Include="Controllers\Lookup\vw_LookupGridEmailTemplateTypeController.cs" />
+    <Compile Include="Controllers\Lookup\vw_LookupGridUserAccessTypeController.cs" />
+    <Compile Include="Controllers\Lookup\vw_LookupGridUserGroupController.cs" />
+    <Compile Include="Controllers\Lookup\vw_LookupGridRoleController.cs" />
+    <Compile Include="Controllers\SmtpServerController.cs" />
+    <Compile Include="Controllers\SystenAlerts\SystemAlertController.cs" />
+    <Compile Include="Controllers\SystenAlerts\vw_SystemAlertGridController.cs" />
+    <Compile Include="Controllers\Template\TemplateController.cs" />
+    <Compile Include="Controllers\Lookup\vw_AspNetUserLogsGridController.cs" />
+    <Compile Include="Controllers\Lookup\vw_LookupDashboardOptionGroupController.cs" />
+    <Compile Include="Controllers\Lookup\vw_LookupUserGroupController.cs" />
+    <Compile Include="Controllers\Lookup\vw_LookupUsersSignatureController.cs" />
+    <Compile Include="Controllers\Lookup\vw_LookupUserAccessTypeController.cs" />
+    <Compile Include="Controllers\Lookup\vw_LookupMenuOptionGroupController.cs" />
+    <Compile Include="Controllers\Lookup\vw_ExportLogGridController.cs" />
+    <Compile Include="Controllers\Template\vw_TemplateGridController.cs" />
+    <Compile Include="Controllers\Lookup\vw_UserDashboardOptionRoleGridController.cs" />
+    <Compile Include="Controllers\Lookup\vw_UserGroupGridController.cs" />
+    <Compile Include="Controllers\Lookup\vw_UserMenuOptionRoleGridController.cs" />
+    <Compile Include="Controllers\Lookup\vw_AspNetUserAccountLogsGridController.cs" />
+    <Compile Include="Controllers\Test\TestSubController.cs" />
+    <Compile Include="Controllers\Test\TestNoteController.cs" />
+    <Compile Include="Controllers\Test\TestController.cs" />
+    <Compile Include="Controllers\Test\vw_TestSubGridController.cs" />
+    <Compile Include="Controllers\Test\vw_TestNoteGridController.cs" />
+    <Compile Include="Controllers\Test\vw_TestGridController.cs" />
+    <Compile Include="Controllers\User\LoginAnalysisController.cs" />
+    <Compile Include="Controllers\User\UserController.cs" />
+    <Compile Include="Controllers\User\UserAccountsController.cs" />
+    <Compile Include="Controllers\User\UserClaimsController.cs" />
+    <Compile Include="Controllers\Lookup\vw_LookupDashboardOptionController.cs" />
+    <Compile Include="Controllers\Lookup\vw_LookupGridController.cs" />
+    <Compile Include="Controllers\Lookup\vw_LookupGridUsersController.cs" />
+    <Compile Include="Controllers\Lookup\vw_LookupGridUserTypeController.cs" />
+    <Compile Include="Controllers\Lookup\vw_LookupListController.cs" />
+    <Compile Include="Controllers\Lookup\vw_LookupMenuOptionController.cs" />
+    <Compile Include="Controllers\Lookup\vw_LookupsRolesController.cs" />
+    <Compile Include="Controllers\Lookup\vw_LookupTemplateTypeController.cs" />
+    <Compile Include="Controllers\Lookup\vw_LookupTypeGridController.cs" />
+    <Compile Include="Controllers\Lookup\vw_LookupUsersController.cs" />
+    <Compile Include="Controllers\Lookup\vw_LookupUserTypeController.cs" />
+    <Compile Include="Controllers\User\UserDashboardOptionRoleController.cs" />
+    <Compile Include="Controllers\User\UserFormController.cs" />
+    <Compile Include="Controllers\User\UserGroupController.cs" />
+    <Compile Include="Controllers\User\UserMenuOptionRoleController.cs" />
+    <Compile Include="Controllers\User\vw_InvalidEmailLogGridController.cs" />
+    <Compile Include="Controllers\User\vw_UserGridController.cs" />
+    <Compile Include="Exception\InternalExceptionLogger.cs" />
+    <Compile Include="Exception\LogException.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\APIGridModelBinder.cs" />
+    <Compile Include="Helpers\Attribute\CustomValidationAttribute.cs" />
+    <Compile Include="Helpers\Attribute\ReadOnlyAttribute.cs" />
+    <Compile Include="Helpers\Attribute\RequestValidationAttribute.cs" />
+    <Compile Include="Helpers\Attribute\DecryptAttribute.cs" />
+    <Compile Include="Helpers\Attribute\DontUpdateAttribute.cs" />
+    <Compile Include="Helpers\Attribute\MenuPermissionAttribute.cs" />
+    <Compile Include="Helpers\EmailServiceHelper.cs" />
+    <Compile Include="Helpers\Extension\BooleanExtentions.cs" />
+    <Compile Include="Helpers\Extension\DateTimeExtentions.cs" />
+    <Compile Include="Helpers\Extension\DecimalExtentions.cs" />
+    <Compile Include="Helpers\Extension\StringExtentions.cs" />
+    <Compile Include="Helpers\GBPDateFormatter.cs" />
+    <Compile Include="Helpers\ModelCopier.cs" />
+    <Compile Include="Helpers\ProcessLogger.cs" />
+    <Compile Include="Helpers\ProcessProgress.cs" />
+    <Compile Include="Helpers\SelectListHelpers.cs" />
+    <Compile Include="Helpers\SMTPBulk.cs" />
+    <Compile Include="Helpers\SMTPConnect.cs" />
+    <Compile Include="Helpers\UserLogHelper.cs" />
+    <Compile Include="Helpers\UserHelper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Providers\ApplicationOAuthProvider.cs" />
+    <Compile Include="Results\ChallengeResult.cs" />
+    <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\Admin\ClientMessagesFormViewModel.cs" />
+    <Compile Include="ViewModels\Admin\LogFormViewModel.cs" />
+    <Compile Include="ViewModels\Admin\LookupFormViewModel.cs" />
+    <Compile Include="ViewModels\Admin\LookupItemFormViewModel.cs" />
+    <Compile Include="ViewModels\Admin\LookupTypeFormViewModel.cs" />
+    <Compile Include="ViewModels\Admin\SetPasswordFormViewModel.cs" />
+    <Compile Include="ViewModels\Admin\TemplateManagement_TemplateFormViewModel.cs" />
+    <Compile Include="ViewModels\Admin\UsersFormViewModel.cs" />
+    <Compile Include="ViewModels\Agreement\UserAgreementViewModel.cs" />
+    <Compile Include="ViewModels\Agreement\AgreementViewModel.cs" />
+    <Compile Include="ViewModels\AppInfoFormViewModel.cs" />
+    <Compile Include="ViewModels\DashboardViewModel.cs" />
+    <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\AccountBindingModels.cs" />
+    <Compile Include="ViewModels\AccountViewModels.cs" />
+    <Compile Include="ViewModels\EmailTemplate\EmailTemplateFormViewModel.cs" />
+    <Compile Include="ViewModels\Email\ApplicationInformationFormViewModel.cs" />
+    <Compile Include="ViewModels\Email\EmailViewModel.cs" />
+    <Compile Include="ViewModels\ErrorLog_ErrorLogViewModel.cs" />
+    <Compile Include="ViewModels\GridTemplateFormViewModel.cs" />
+    <Compile Include="ViewModels\IdentityModels.cs" />
+    <Compile Include="ViewModels\InternalGridSettingDefaultViewModel.cs" />
+    <Compile Include="ViewModels\InternalGridSettingViewModel.cs" />
+    <Compile Include="ViewModels\Lookup\FileViewModel.cs" />
+    <Compile Include="ViewModels\Lookup\InternalGridSettingDefaultViewModel.cs" />
+    <Compile Include="ViewModels\Lookup\InterviewAppointmentViewModel.cs" />
+    <Compile Include="ViewModels\Lookup\InternalReportViewModel.cs" />
+    <Compile Include="ViewModels\Lookup\InternalGridSettingViewModel .cs" />
+    <Compile Include="ViewModels\Lookup\InternalFilterHeaderViewModel.cs" />
+    <Compile Include="ViewModels\Lookup\AttachmentFormViewModel.cs" />
+    <Compile Include="ViewModels\Lookup\LookupTypeViewModel.cs" />
+    <Compile Include="ViewModels\Lookup\Lookup_LookupFormViewModel.cs" />
+    <Compile Include="ViewModels\Lookup\MessageViewModel.cs" />
+    <Compile Include="ViewModels\Lookup\TemplateViewModel.cs" />
+    <Compile Include="ViewModels\Lookup\UserAccountsViewModel.cs" />
+    <Compile Include="ViewModels\Lookup\UserClaimsViewModel.cs" />
+    <Compile Include="ViewModels\SystemAlert\SystemAlertViewModel.cs" />
+    <Compile Include="ViewModels\Test\TestSubViewModel.cs" />
+    <Compile Include="ViewModels\Test\TestNoteViewModel.cs" />
+    <Compile Include="ViewModels\Test\TestViewModel.cs" />
+    <Compile Include="ViewModels\User\LoggedUser.cs" />
+    <Compile Include="ViewModels\User\LoginAnalysis.cs" />
+    <Compile Include="ViewModels\User\LoginAnalysis_LoginAnalysisFormViewModel.cs" />
+    <Compile Include="ViewModels\User\UserGroupMenuOptionFormViewModel.cs" />
+    <Compile Include="ViewModels\User\UserGroupDashboardTableViewModel.cs" />
+    <Compile Include="ViewModels\User\UserGroupTableViewModel.cs" />
+    <Compile Include="ViewModels\User\UserFormBindingModel.cs" />
+    <Compile Include="ViewModels\User\UserGroupMenuOption_UserGroupMenuOptionFormViewModel.cs" />
+    <Compile Include="ViewModels\User\UserGroupDashboardOption_UserGroupDashboardOptionFormViewModel.cs" />
+    <Compile Include="ViewModels\User\SystemSettings_UserDashboardOptionRoleViewModel.cs" />
+    <Compile Include="ViewModels\User\SystemSettings_UserMenuOptionRoleViewModel.cs" />
+    <Compile Include="ViewModels\User\SystemSettings_UserGroupFormViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Controllers\Content\templates\DbSyncEmailTemplate.html" />
+    <Content Include="EmailTemplates\ChangePassword.html" />
+    <Content Include="EmailTemplates\ConfirmationEmail.html" />
+    <Content Include="EmailTemplates\SubmissionEmail.html" />
+    <Content Include="EmailTemplates\RegistrationEmail.html" />
+    <Content Include="EmailTemplates\PasswordReset.html" />
+    <Content Include="Global.asax" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web.Dev.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Live.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Uat.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PBASE.Entity\PBASE.Entity.csproj">
+      <Project>{48f672e8-4513-4f7e-a296-c0ccc87f9aa1}</Project>
+      <Name>PBASE.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PBASE.Repository\PBASE.Repository.csproj">
+      <Project>{a9f879bc-ca11-4470-a655-8541b5da41a1}</Project>
+      <Name>PBASE.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PBASE.Service\PBASE.Service.csproj">
+      <Project>{ba69bb65-147a-42d8-a6f5-5d1e57e2d783}</Project>
+      <Name>PBASE.Service</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Dev|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Live|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Uat|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>4233</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:62222/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+  <UsingTask TaskName="TransformXml" AssemblyFile="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\Web\Microsoft.Web.Publishing.Tasks.dll" />
+  <Target Name="AfterBuild" Condition="Exists('Web.$(Configuration).config')">
+    <!--Generate transformed config in the output directory-->
+    <TransformXml Source="Web.config" Destination="$(OutputPath)Web.config" Transform="Web.$(Configuration).config" />
+  </Target>
+</Project>

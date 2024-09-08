@@ -1,0 +1,102 @@
+<ngx-loading [show]="(data | json) == '{}'"></ngx-loading>
+<div class="card form-card">
+  <div class="card-header">
+    {{heading}}
+  </div>
+  <div class="card-block">
+    <form novalidate #emailTemplateForm="ngForm">
+      <app-unsaved-changes [formName]="emailTemplateForm"></app-unsaved-changes>
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="form-group" [ngClass]="{'has-danger': EmailTemplateTypeId?.errors?.required}">
+            <label for="EmailTemplateTypeId">Template Type <span class="required-denote">*</span></label>
+            <ng-select [selectOnTab]="true" required [items]="data.vw_LookupEmailTemplateType" bindLabel="LookupValue" bindValue="LookupId" groupBy="GroupBy" (ngModelChange)="onTemplateTypeChange($event)" [(ngModel)]="data.EmailTemplateTypeId" #EmailTemplateTypeId="ngModel" name="EmailTemplateTypeId">
+            </ng-select>
+          </div>
+
+          <div class="form-group" [ngClass]="{'has-danger': EmailTypeId?.errors?.required}">
+            <label for="EmailTypeId">Email Type <span class="required-denote">*</span></label>
+            <ng-select [selectOnTab]="true" required [items]="data.vw_LookupEmailType" bindLabel="LookupValue" bindValue="LookupId" groupBy="GroupBy" [(ngModel)]="data.EmailTypeId" #EmailTypeId="ngModel" name="EmailTypeId">
+            </ng-select>
+          </div>
+
+          <div class="form-group" [ngClass]="{'has-danger': EmailSubject?.errors?.required}">
+            <label for="EmailSubject">Email Subject <span class="required-denote">*</span></label>
+            <input trim="blur" required type="text" maxlength="200" [(ngModel)]="data.EmailSubject" name="EmailSubject" #EmailSubject="ngModel" class="form-control">
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="form-group" [ngClass]="{'has-danger': FromEmailAddressId ?.errors?.required}">
+            <label for="FromEmailAddressId ">From <span class="required-denote">*</span></label>
+            <ng-select [selectOnTab]="true" required [items]="data.vw_LookupFromEmailAddress" bindLabel="LookupValue" bindValue="LookupId" groupBy="GroupBy" [(ngModel)]="data.FromEmailAddressId " #FromEmailAddressId="ngModel" name="FromEmailAddressId ">
+            </ng-select>
+          </div>
+
+          <div class="form-group">
+            <label for="BccAddress">BCC</label>
+            <input trim="blur" type="text" maxlength="300" [(ngModel)]="data.BccAddress" name="BccAddress" #BccAddress="ngModel" class="form-control">
+          </div>
+
+          <div class="form-group">
+            <label for="CcAddress">CC</label>
+            <input trim="blur" type="text" maxlength="300" [(ngModel)]="data.CcAddress" name="CcAddress" #CcAddress="ngModel" class="form-control">
+          </div>
+
+        </div>
+
+        <div class="col-lg-4">
+          <div class="form-group" [ngClass]="{'has-danger': EmailTemplateName?.errors?.required}">
+            <label for="EmailTemplateName">Template Name <span class="required-denote">*</span></label>
+            <input trim="blur" required type="text" maxlength="100" [(ngModel)]="data.EmailTemplateName" name="EmailTemplateName" #EmailTemplateName="ngModel" class="form-control">
+          </div>
+
+          <div class="form-group">
+            <label for="types">Email Tag(s)</label>
+            <div class="form-control h-auto min-h-35">
+              <div class="d-inline-block" *ngFor="let EmailTemplateTag of EmailTemplateTags">
+                {{EmailTemplateTag.LookupValue}}
+                <div class="custom-tooltip">
+                  <i class="far fa-question-circle"></i>
+                  <div class="top">
+                    <h5>{{EmailTemplateTag.LookupExtraText}}</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="form-group" [ngClass]="{'has-danger': EmailBody?.errors?.required}">
+            <label for="EmailBody">Email Body <span class="required-denote">*</span></label>
+            <angular-editor required id="EmailBody" class="email-template emailTemplateBody" name="EmailBody" #EmailBody="ngModel" [(ngModel)]="data.EmailBody" [config]="editorConfig"></angular-editor>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<footer class="panel-footer text-right bg-light lter">
+  <div class="float-left">
+    <small class="required">* denotes required field</small>
+  </div>
+  <button type="button" class="btn btn-success" [hidden]="hideSave || (appInfo.isReadonly && !appInfo.isUserReadonly)" [disabled]="!emailTemplateForm.form.valid" [ladda]="isSaving" (click)="submit(emailTemplateForm.form.valid)">Save</button>
+  <button class="btn btn-danger"
+          [disabled]="appInfo.isUserReadonly"
+          [hidden]="!queryParams.id || appInfo.isDeleteHidden"
+          [ladda]="isDeleting"
+          mwlConfirmationPopover
+          popoverTitle="Delete Email Template"
+          popoverMessage="Are you sure you want to delete this Email Template?"
+          placement="top"
+          (confirm)="delete()"
+          (cancel)="true">
+    Delete
+  </button>
+  <button type="button" class="btn btn-dark" (click)="goBack()">Cancel</button>
+</footer>

@@ -1,0 +1,45 @@
+<ngx-loading [show]="isLoading"></ngx-loading>
+<div class="card form-card">
+  <div class="card-header">
+    Groups
+  </div>
+  <div class="card-block">
+    <form novalidate #groupsForm="ngForm">
+      <app-unsaved-changes [formName]="groupsForm"></app-unsaved-changes>
+      <div class="row mb-10">
+        <div class="col-lg-3">
+          <div class="form-group" [ngClass]="{'has-danger': groupsOption?.errors?.required}">
+            <label for="menuOption">Group Name<span class="required-denote">*</span></label>
+            <input trim="blur" type="text" maxlength="50" [(ngModel)]="data.UserGroupName" name="groupsOption" #groupsOption="ngModel" class="form-control" required>
+            <div class="form-control-feedback" *ngIf="groupsOption?.errors?.required && submitted">Groups Name is required!</div>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="form-group" [ngClass]="{'has-danger': aspNetRoleId?.errors?.required}">
+            <label for="types">Role(s)<span class="required-denote">*</span></label>
+            <ng-select [selectOnTab]="true" bindLabel="LookupValue" bindValue="LookupId" groupBy="GroupBy" #aspNetRoleId="ngModel" [items]="data.allRoles" name="aspNetRoleId" [(ngModel)]="data.AspNetRoleId" placeholder="No Role" required>
+            </ng-select>
+            <div class="form-control-feedback" *ngIf="aspNetRoleId?.errors?.required && submitted">Role is required!</div>
+          </div>
+        </div>
+      </div>
+      <div class="row" *ngIf="queryParams.id">
+        <div class="col-xl-6">
+          <app-user-group-table [isEditClicked]=isEditClicked (isClicked)="OnIsClicked($event)"></app-user-group-table>
+        </div>
+        <div class="col-xl-6">
+          <app-user-group-dashboard-table [isEditClickedDashboard]=isEditClickedDashboard (isClickedDashboard)="OnIsClickedDashboard($event)"></app-user-group-dashboard-table>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</div>
+
+<footer class="panel-footer text-right bg-light lter">
+  <div class="float-left">
+    <small class="required">* denotes required field</small>
+  </div>
+  <button type="button" class="btn btn-success" [hidden]="appInfo.isReadonly && !appInfo.isUserReadonly" [disabled]="!groupsForm.form.valid || isEditClicked || isEditClickedDashboard" [ladda]="isSaving" (click)="submit(groupsForm.form.valid)">Save</button>
+  <button type="button" class="btn btn-dark" [disabled]="isEditClicked || isEditClickedDashboard" (click)="goBack()">Cancel</button>
+</footer>

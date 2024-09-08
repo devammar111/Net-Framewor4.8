@@ -1,0 +1,158 @@
+<ngx-loading [show]="(data | json) == '{}'"></ngx-loading>
+<form novalidate #testForm="ngForm">
+  <app-unsaved-changes [formName]="testForm"></app-unsaved-changes>
+  <app-scroll-handler [name]="tests.id"></app-scroll-handler>
+  <div [hidden]="(data | json) == '{}'" class="accordion-panel card form-card" *ngIf="headerSectionInfo.show">
+    <div class="card-header fa fa-plus-circle collapse-btn" (click)="collapsed[0] = !collapsed[0]" [attr.aria-expanded]="!collapsed[0]" [ngClass]="{'is-invalid': collapsed[0]}">
+      Test Header Section
+    </div>
+    <div [ngbCollapse]="collapsed[0]" class="card-block">
+      <div class="row">
+        <div class="col-lg-3 col-sm-12">
+          <div class="form-group" [ngClass]="{'has-danger': TestText1?.errors?.required}">
+            <label for="TestText1">Test Text 1<span class="required-denote">*</span></label>
+            <input trim="blur" type="text" maxlength="50" [(ngModel)]="data.TestText1" name="TestText1" #TestText1="ngModel" class="form-control" required [disabled]="headerSectionInfo.isReadonly">
+          </div>
+          <div *ngIf="TestText2Info.show" class="form-group">
+            <label for="TestText2">Test Text 2</label>
+            <input trim="blur" type="text" maxlength="10" [(ngModel)]="data.TestText2" name="TestText2" #TestText2="ngModel" class="form-control" [disabled]="headerSectionInfo.isReadonly || TestText2Info.isReadonly">
+          </div>
+          <div class="form-group">
+            <label for="TestText3">Test Text 3</label>
+            <input trim="blur" type="text" maxlength="100" [(ngModel)]="data.TestText3" name="TestText3" #TestText3="ngModel" class="form-control" [disabled]="headerSectionInfo.isReadonly">
+          </div>
+        </div>
+        <div class="col-lg-3 col-sm-12">
+          <div class="form-group">
+            <label for="IsTest1">Test 1?</label>
+            <div class="customFieldGroup">
+              <pb-switch class="custom-switch pl-0" (change)="onIsTest1($event)" [(ngModel)]="data.IsTest1" name="IsTest1" id="IsTest1" labelOn="Yes" labelOff="No" [disabled]="headerSectionInfo.isReadonly"></pb-switch>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="IsTest2">Test 2?</label>
+            <div class="customFieldGroup">
+              <pb-switch class="custom-switch pl-0" (change)="onIsTest2($event)" [(ngModel)]="data.IsTest2" name="IsTest2" id="IsTest2" labelOn="Yes" labelOff="No" [disabled]="headerSectionInfo.isReadonly"></pb-switch>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="IsTest3">Test 3?</label>
+            <div class="customFieldGroup">
+              <pb-switch class="custom-switch pl-0" (change)="onIsTest3($event)" [(ngModel)]="data.IsTest3" name="IsTest3" id="IsTest3" labelOn="Yes" labelOff="No" [disabled]="headerSectionInfo.isReadonly"></pb-switch>
+            </div>
+          </div>
+        </div>
+        <div class="col" *ngIf="TestText4Info.show">
+          <div class="form-group">
+            <label for="TestText4">Test Text 4</label>
+            <textarea trim="blur" rows="7" type="text" [(ngModel)]="data.TestText4" name="TestText4" #TestText4="ngModel" class="form-control" [disabled]="headerSectionInfo.isReadonly || TestText4Info.isReadonly"></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div [hidden]="(data | json) == '{}'" class="accordion-panel card form-card" *ngIf="dateSectionInfo.show">
+    <div class="card-header fa fa-plus-circle collapse-btn" (click)="collapsed[1] = !collapsed[1]" [attr.aria-expanded]="!collapsed[1]" [ngClass]="{'is-invalid': collapsed[1]}">
+      <span class="fa fa-table"></span>Test Sub
+    </div>
+    <div [ngbCollapse]="collapsed[1]">
+      <app-test-sub-tab-one-grid></app-test-sub-tab-one-grid>
+    </div>
+  </div>
+
+  <div [hidden]="(data | json) == '{}'" class="accordion-panel card form-card" *ngIf="dateSectionInfo.show">
+    <div class="card-header fa fa-plus-circle collapse-btn" (click)="collapsed[2] = !collapsed[2]" [attr.aria-expanded]="!collapsed[2]" [ngClass]="{'is-invalid': collapsed[2]}">
+      Test Date Section
+    </div>
+    <div [ngbCollapse]="collapsed[2]" class="card-block">
+      <div class="row">
+        <div class="col-lg-3">
+          <div class="form-group">
+            <label for="testDate1">Test Date 1</label>
+            <div class="input-group" (clickOutside)="testDate1picker.close()">
+              <input class="form-control" #testDate1="ngModel" #testDate1picker="ngbDatepicker" id="testDate1" name="testDate1" placeholder="dd/mm/yyyy" [(ngModel)]="TestDate1" ngbDatepicker [disabled]="dateSectionInfo.isReadonly">
+              <div class="input-group-append">
+                <button class="btn" (click)="testDate1picker.toggle()" type="button"><i class="far fa-calendar-alt"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="form-group">
+            <label for="testDate2">Test Date 2</label>
+            <div class="input-group" (clickOutside)="testDate2picker.close()">
+              <input class="form-control" #testDate2="ngModel" #testDate2picker="ngbDatepicker" id="testDate2" name="testDate2" placeholder="dd/mm/yyyy" [(ngModel)]="TestDate2" ngbDatepicker [disabled]="dateSectionInfo.isReadonly">
+              <div class="input-group-append">
+                <button class="btn" (click)="testDate2picker.toggle()" type="button"><i class="far fa-calendar-alt"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="form-group">
+            <label for="testDate3">Test Date 3</label>
+            <div class="input-group" (clickOutside)="testDate3picker.close()">
+              <input class="form-control" #testDate3="ngModel" #testDate3picker="ngbDatepicker" id="testDate3" name="testDate3" placeholder="dd/mm/yyyy" [(ngModel)]="TestDate3" ngbDatepicker [disabled]="dateSectionInfo.isReadonly">
+              <div class="input-group-append">
+                <button class="btn" (click)="testDate3picker.toggle()" type="button"><i class="far fa-calendar-alt"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div [hidden]="(data | json) == '{}'" class="accordion-panel card form-card">
+    <div class="card-header fa fa-plus-circle collapse-btn" (click)="collapsed[3] = !collapsed[3]" [attr.aria-expanded]="!collapsed[3]" [ngClass]="{'is-invalid': collapsed[3]}">
+      Test Dropdown Section
+    </div>
+    <div [ngbCollapse]="collapsed[3]" class="card-block">
+      <div class="row">
+        <div class="col-lg-3">
+          <div class="form-group">
+            <label for="TestType1">Test Type 1</label>
+            <ng-select [selectOnTab]="true" [items]="data.vw_LookupTestType" bindLabel="LookupValue" bindValue="LookupId" groupBy="GroupBy" [(ngModel)]="data.TestType1Id" #TestType1="ngModel" name="TestType1">
+            </ng-select>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="form-group">
+            <label for="TestType2">Test Type 2</label>
+            <ng-select [selectOnTab]="true" [items]="data.vw_LookupTestType" bindLabel="LookupValue" bindValue="LookupId" groupBy="GroupBy" [(ngModel)]="data.TestType2Id" #TestType2="ngModel" name="TestType2">
+            </ng-select>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="form-group">
+            <label for="TestType3">Test Type 3</label>
+            <ng-select [selectOnTab]="true" [items]="data.vw_LookupTestType" bindLabel="LookupValue" bindValue="LookupId" groupBy="GroupBy" [(ngModel)]="data.TestType3Id" #TestType3="ngModel" name="TestType3">
+            </ng-select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="panel-footer text-right bg-light lter">
+    <div class="float-left">
+      <small class="required">* denotes required field</small>
+    </div>
+    <button type="button" *ngIf="TestButton1Info.show" class="btn btn-warning">Test Button 1</button>
+    <button type="button" class="btn btn-success" [hidden]="(appInfo.isReadonly || TestTab1Info.isReadonly) && !appInfo.isUserReadonly" [disabled]="!testForm.form.valid" [ladda]="isSaving" (click)="submit(testForm.form.valid)">Save</button>
+    <button class="btn btn-danger"
+            [disabled]="appInfo.isUserReadonly"
+            [hidden]="!queryParams.testId || appInfo.isDeleteHidden || (!appInfo.isUserReadonly && TestTab1Info.isReadonly)"
+            [ladda]="isDeleting"
+            mwlConfirmationPopover
+            popoverTitle="Delete Template"
+            popoverMessage="Are you sure you want to delete this test?"
+            placement="top"
+            (confirm)="delete()"
+            (cancel)="true">
+      Delete
+    </button>
+    <button type="button" class="btn btn-dark" (click)="goBack()">Cancel</button>
+  </footer>
+</form>

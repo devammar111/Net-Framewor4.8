@@ -1,0 +1,71 @@
+/*******************
+ Breadcrumb and page title
+*******************/
+@import "../../variable";
+
+.page-breadcrumb {
+  background-color: $gray-lighter;
+  border-bottom: 1px solid $border-color;
+  border-top: 1px solid $border-color;
+  margin-top: 1px;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 54px;
+  left: 250px;
+  z-index: 999;
+  width: auto;
+  padding-left: 10px;
+
+  .page-title {
+    margin-bottom: 0px;
+  }
+
+  .breadcrumb {
+    padding: 0px;
+    margin: 0px;
+    background: transparent;
+    font-size: 12px;
+
+    .breadcrumb-item {
+      position: relative;
+      font-size: 14px;
+      margin: 0;
+
+      a {
+        color: #333333;
+        padding: 5px 5px 5px 0;
+        display: inline-block;
+      }
+
+      span {
+        padding: 5px 15px;
+        display: inline-block;
+        color: #333333;
+      }
+
+      & + .breadcrumb-item {
+        padding-left: 11px;
+        margin-left: 2px;
+
+        &::before {
+          display: inline-block;
+          top: 5px;
+          position: absolute;
+          left: 0;
+        }
+
+        span {
+          padding: 5px 15px 5px 0;
+          color: $primary-color;
+        }
+      }
+
+      &:first-child {
+        span {
+          padding-left: 0;
+        }
+      }
+    }
+  }
+}

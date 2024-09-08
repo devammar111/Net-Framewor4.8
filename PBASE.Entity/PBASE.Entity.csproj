@@ -1,0 +1,252 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{48F672E8-4513-4F7E-A296-C0CCC87F9AA1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PBASE.Entity</RootNamespace>
+    <AssemblyName>PBASE.Entity</AssemblyName>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Dev|AnyCPU'">
+    <OutputPath>bin\Dev\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Uat|AnyCPU'">
+    <OutputPath>bin\Uat\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Live|AnyCPU'">
+    <OutputPath>bin\Live\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.WebHelpers.3.0.0\lib\net45\Microsoft.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Probase.GridHelper">
+      <HintPath>..\lib\Probase.GridHelper\Probase.GridHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.0.0\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WebMatrix.Data, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.Data.3.0.0\lib\net45\WebMatrix.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="WebMatrix.WebData, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.WebData.3.0.0\lib\net45\WebMatrix.WebData.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Agreement\UserAgreement.cs" />
+    <Compile Include="Agreement\Agreement.cs" />
+    <Compile Include="Agreement\AgreementUserType.cs" />
+    <Compile Include="Agreement\vw_AgreementPreviousVersionNumber.cs" />
+    <Compile Include="Agreement\vw_AgreementVersionSubGrid.cs" />
+    <Compile Include="Agreement\vw_UserAgreementForm.cs" />
+    <Compile Include="Agreement\vw_UserAgreementSubGrid.cs" />
+    <Compile Include="Agreement\vw_AgreementUserSubGrid.cs" />
+    <Compile Include="Agreement\vw_AgreementGrid.cs" />
+    <Compile Include="Base\BaseEntity.cs" />
+    <Compile Include="Base\LookupEntity.cs" />
+    <Compile Include="Base\TableEntity.cs" />
+    <Compile Include="Base\ITableEntity.cs" />
+    <Compile Include="Base\TrackingEntity.cs" />
+    <Compile Include="Base\ITrackingEntity.cs" />
+    <Compile Include="Base\IBaseEntity.cs" />
+    <Compile Include="EmailTemplate\EmailTemplateTag.cs" />
+    <Compile Include="EmailTemplate\EmailTemplate.cs" />
+    <Compile Include="EmailTemplate\vw_EmailTemplateGrid.cs" />
+    <Compile Include="Email\ApplicationInformation.cs" />
+    <Compile Include="Email\Email.cs" />
+    <Compile Include="Email\EmailAttachment.cs" />
+    <Compile Include="Email\vw_EmailGrid.cs" />
+    <Compile Include="Enum\EmailStatus.cs" />
+    <Compile Include="Enum\EmailTypes.cs" />
+    <Compile Include="Enum\RequestType.cs" />
+    <Compile Include="Helper\CryptoEngine.cs" />
+    <Compile Include="Lookup\InternalGridSettingDefault.cs" />
+    <Compile Include="Lookup\SafeIPs.cs" />
+    <Compile Include="Lookup\TemplateTag.cs" />
+    <Compile Include="Lookup\UserAccounts.cs" />
+    <Compile Include="Lookup\UserExportLog.cs" />
+    <Compile Include="Lookup\UserClaims.cs" />
+    <Compile Include="Lookup\InternalReportField.cs" />
+    <Compile Include="Lookup\InternalReport.cs" />
+    <Compile Include="Lookup\Attachment.cs" />
+    <Compile Include="Lookup\InternalFilterHeader.cs" />
+    <Compile Include="Lookup\InternalGridSetting.cs" />
+    <Compile Include="Lookup\InterviewAppointment.cs" />
+    <Compile Include="Lookup\Lookup.cs" />
+    <Compile Include="Lookup\LookupType.cs" />
+    <Compile Include="Lookup\Message.cs" />
+    <Compile Include="Lookup\Template.cs" />
+    <Compile Include="Lookup\vw_LookupAccessType.cs" />
+    <Compile Include="Lookup\vw_LookupSetting.cs" />
+    <Compile Include="Lookup\vw_LookupDashboardObject.cs" />
+    <Compile Include="Lookup\vw_LookupDashboardObjectType.cs" />
+    <Compile Include="Lookup\vw_LookupObject.cs" />
+    <Compile Include="Lookup\vw_LookupObjectType.cs" />
+    <Compile Include="Lookup\vw_LookupAlertType.cs" />
+    <Compile Include="Lookup\vw_LookupFromEmailAddress.cs" />
+    <Compile Include="Lookup\vw_LookupEmailType.cs" />
+    <Compile Include="Lookup\vw_LookupDashboardOption.cs" />
+    <Compile Include="Lookup\vw_ExportLogGrid.cs" />
+    <Compile Include="Lookup\vw_LookupEmailTemplateType.cs" />
+    <Compile Include="Lookup\vw_LookupGridTemplateAllowedType.cs" />
+    <Compile Include="Lookup\vw_LookupGridEmailType.cs" />
+    <Compile Include="Lookup\vw_LookupGridUserAccessType.cs" />
+    <Compile Include="Lookup\vw_LookupGridEmailTemplateType.cs" />
+    <Compile Include="Lookup\vw_LookupGridUserGroup.cs" />
+    <Compile Include="Lookup\vw_LookupGridRole.cs" />
+    <Compile Include="Lookup\vw_LookupTemplateAllowedType.cs" />
+    <Compile Include="Lookup\vw_LookupMenuOptionGroup.cs" />
+    <Compile Include="Lookup\vw_LookupDashboardOptionGroup.cs" />
+    <Compile Include="Lookup\vw_LookupGridAlertType.cs" />
+    <Compile Include="Lookup\vw_LookupUserGroup.cs" />
+    <Compile Include="Lookup\vw_LookupUserAccessType.cs" />
+    <Compile Include="Lookup\vw_LookupMenuOption.cs" />
+    <Compile Include="Lookup\vw_LookupList.cs" />
+    <Compile Include="Lookup\vw_LookupGridUsers.cs" />
+    <Compile Include="Lookup\vw_LookupGrid.cs" />
+    <Compile Include="Lookup\vw_LookupGridUserType.cs" />
+    <Compile Include="Lookup\vw_LookupRole.cs" />
+    <Compile Include="Lookup\vw_LookupTemplateType.cs" />
+    <Compile Include="Lookup\vw_LookupUsers.cs" />
+    <Compile Include="Lookup\vw_LookupUserType.cs" />
+    <Compile Include="Lookup\vw_LookupTypeGrid.cs" />
+    <Compile Include="Lookup\vw_LookupUsersSignature.cs" />
+    <Compile Include="Lookup\vw_MessageGrid.cs" />
+    <Compile Include="Lookup\vw_TemplateGrid.cs" />
+    <Compile Include="Lookup\vw_UserGrid.cs" />
+    <Compile Include="SystemAlert\SystemAlert.cs" />
+    <Compile Include="SystemAlert\vw_SystemAlertGrid.cs" />
+    <Compile Include="SystemAlert\vw_SystemAlertMessages.cs" />
+    <Compile Include="SystemAlert\vw_SystemAlertIsClosed.cs" />
+    <Compile Include="Test\TestNoteAttachment.cs" />
+    <Compile Include="Test\TestSub.cs" />
+    <Compile Include="Test\TestNote.cs" />
+    <Compile Include="Test\Test.cs" />
+    <Compile Include="Test\vw_LookupTestType.cs" />
+    <Compile Include="Test\vw_LookupGridTestType.cs" />
+    <Compile Include="Test\vw_TestNoteGrid.cs" />
+    <Compile Include="Test\vw_TestSubGrid.cs" />
+    <Compile Include="Test\vw_TestGrid.cs" />
+    <Compile Include="User\AspNetUsersInvalid.cs" />
+    <Compile Include="User\UserDashboardOptionRole.cs" />
+    <Compile Include="User\AspNetUserLogs.cs" />
+    <Compile Include="User\vw_AspNetUserAccountLogs.cs" />
+    <Compile Include="User\vw_AspNetUserLogsGrid.cs" />
+    <Compile Include="User\vw_InvalidEmailLogGrid.cs" />
+    <Compile Include="User\vw_UserGroupDashboardObjectSubGrid.cs" />
+    <Compile Include="User\vw_UserGroupObjectSubGrid.cs" />
+    <Compile Include="User\vw_UserGroupGrid.cs" />
+    <Compile Include="User\vw_UserDashboardOption.cs" />
+    <Compile Include="User\vw_UserMenuOption.cs" />
+    <Compile Include="User\vw_LookupUserRoles.cs" />
+    <Compile Include="User\vw_LookupUserAssignedRoles.cs" />
+    <Compile Include="User\vw_RoleGrid.cs" />
+    <Compile Include="User\vw_UserDashboardOptionRoleGrid.cs" />
+    <Compile Include="User\vw_UserMenuOptionRoleGrid.cs" />
+    <Compile Include="User\UserMenuOptionRole.cs" />
+    <Compile Include="User\UserGroupDashboardOption.cs" />
+    <Compile Include="User\UserGroupMenuOption.cs" />
+    <Compile Include="User\UserGroup.cs" />
+    <Compile Include="Security\CachedUser.cs" />
+    <Compile Include="Security\User.cs" />
+    <Compile Include="Enum\AttachmentTypes.cs" />
+    <Compile Include="Enum\SessionItems.cs" />
+    <Compile Include="Enum\FormMode.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.13\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.13\tools\Microsoft.Bcl.Build.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,98 @@
+<div class="card form-card">
+  <div class="card-header">
+    {{heading}}
+  </div>
+  <div class="card-block">
+    <form novalidate #lookupForm="ngForm">
+      <app-unsaved-changes [formName]="lookupForm"></app-unsaved-changes>
+      <div class="row">
+        <div class="col-lg-3">
+          <div class="form-group" [ngClass]="{'has-danger': lookupname?.errors?.required}">
+            <label for="lookupName"><span class="required-denote">*</span>Lookup Name</label>
+            <input trim="blur" type="text" maxlength="200" [(ngModel)]="lookup.LookupName" #lookupname="ngModel" class="form-control" name="lookupname" required>
+          </div>
+          <div class="form-group">
+            <label for="lookupNameShort">Lookup Name Short</label>
+            <input trim="blur" type="text" maxlength="50" [(ngModel)]="lookup.LookupNameShort" #lookupNameShort="ngModel" class="form-control" name="lookupNameShort">
+          </div>
+          <div class="form-group">
+            <label for="sortOrder">Sort Order</label>
+            <input trim="blur" type="number" [(ngModel)]="lookup.SortOrder" #sortOrder="ngModel" class="form-control" name="sortOrder">
+          </div>
+
+
+          <div class="form-group" *ngIf="queryParams.lookupId">
+            <label for="archive">Archived</label>
+            <ng-select [selectOnTab]="true" [items]="Archives" bindLabel="LookupValue" bindValue="LookupId" [(ngModel)]="lookup.IsArchived" #archive="ngModel" name="archive">
+            </ng-select>
+          </div>
+
+
+        </div>
+        <div class="col-lg-3">
+          <div class="form-group">
+            <label for="lookupExtraDecimal">Lookup Extra Decimal</label>
+            <input type="number" [(ngModel)]="lookup.LookupExtraDecimal" #lookupExtraDecimal="ngModel" class="form-control" name="lookupExtraDecimal">
+          </div>
+          <div class="form-group">
+            <label for="lookupExtraDate">Lookup Extra Date</label>
+            <div class="input-group" (clickOutside)="lookupExtraDatepicker.close()" [ngClass]="{'has-danger': lookupExtraDate?.errors?.required}">
+              <input class="form-control" #lookupExtraDate="ngModel" #lookupExtraDatepicker="ngbDatepicker" id="lookupExtraDate" name="lookupExtraDate" placeholder="dd/mm/yyyy" [(ngModel)]="LookupExtraDate" ngbDatepicker>
+              <div class="input-group-append">
+                <button class="btn" (click)="lookupExtraDatepicker.toggle()" type="button"><i class="far fa-calendar-alt"></i></button>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="lookupExtraText">Lookup Extra Text</label>
+            <textarea trim="blur" rows="4" class="form-control" maxlength="2000" [(ngModel)]="lookup.LookupExtraText" #lookupExtraText="ngModel" name="lookupExtraText"></textarea>
+            <span class="float-right label label-default" id="counter">{{lookup.LookupExtraText ? lookup.LookupExtraText.length : 0}} / 2000</span>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="form-group" *ngIf="lookup.LookupView != null">
+            <label for="lookupExtraInt">{{lookup.LookupViewLabel}}</label>
+            <ng-select [selectOnTab]="true" [items]="lookup.allLookupView" bindLabel="Text" bindValue="Value" groupBy="GroupBy" [(ngModel)]="lookup.LookupExtraInt" #lookupExtraInt="ngModel" name="lookupExtraInt">
+            </ng-select>
+          </div>
+          <div class="form-group" *ngIf="lookup.LookupView2 != null">
+            <label for="lookupExtraInt2">{{lookup.LookupViewLabel2}}</label>
+            <ng-select [selectOnTab]="true" [items]="lookup.allLookupView2" bindLabel="Text" bindValue="Value" groupBy="GroupBy" [(ngModel)]="lookup.LookupExtraInt2" #lookupExtraInt2="ngModel" name="lookupExtraInt2">
+            </ng-select>
+          </div>
+          <div class="form-group" *ngIf="lookup.LookupView3 != null">
+            <label for="lookupExtraInt3">{{lookup.LookupViewLabel3}}</label>
+            <ng-select [selectOnTab]="true" [items]="lookup.allLookupView3" bindLabel="Text" bindValue="Value" groupBy="GroupBy" [(ngModel)]="lookup.LookupExtraInt3" #lookupExtraInt3="ngModel" name="lookupExtraInt3">
+            </ng-select>
+          </div>
+          <div class="form-group" *ngIf="lookup.LookupView4 != null">
+            <label for="lookupExtraInt4">{{lookup.LookupViewLabel4}}</label>
+            <ng-select [selectOnTab]="true" [items]="lookup.allLookupView4" bindLabel="Text" bindValue="Value" groupBy="GroupBy" [(ngModel)]="lookup.LookupExtraInt4" #lookupExtraInt4="ngModel" name="lookupExtraInt4">
+            </ng-select>
+          </div>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</div>
+
+<footer class="panel-footer text-right bg-light lter">
+  <div class="float-left">
+    <small class="required">* denotes required field</small>
+  </div>
+  <button type="button" class="btn btn-success" [hidden]="appInfo.isReadonly && !appInfo.isUserReadonly" [disabled]="!lookupForm.form.valid" (click)="submit(lookupForm.form.valid)" [ladda]="isSaving">Save</button>
+  <!--<button type="button" class="btn btn-danger"
+          [ladda]="isDeleting"
+          [disabled]="appInfo.isUserReadonly"
+          [hidden]="!queryParams.lookupId || appInfo.isDeleteHidden"
+          mwlConfirmationPopover
+          popoverTitle="Delete Lookup"
+          popoverMessage="Are you sure you want to delete this Lookup?"
+          placement="top"
+          (confirm)="delete()"
+          cancel="true">
+    Delete
+  </button>-->
+  <button type="button" class="btn btn-dark" (click)="goBack()">Cancel</button>
+</footer>

@@ -1,0 +1,11 @@
+<ngx-loading [show]="!data"></ngx-loading>
+
+<angular-editor class="rounded-top" disabled id="EmailBody" name="EmailBody" #EmailBody="ngModel" [(ngModel)]="data" [config]="editorConfig"></angular-editor>
+
+<footer class="panel-footer text-right bg-light lter">
+  <div class="float-left">
+    <small class="required">* denotes required field</small>
+  </div>
+  <button class="btn btn-default btn-primary submit" type="button" (click)="close()">Cancel</button>
+</footer>
+

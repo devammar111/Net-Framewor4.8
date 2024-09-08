@@ -1,0 +1,60 @@
+<ngx-loading [show]="(data | json) == '{}'"></ngx-loading>
+<div class="card form-card">
+  <div class="card-header">
+    {{heading}}
+  </div>
+  <div class="card-block">
+    <form novalidate #SystemAdministrationForm="ngForm">
+      <app-unsaved-changes [formName]="SystemAdministrationForm"></app-unsaved-changes>
+      <div class="row">
+        <div class="col-lg-3">
+
+          <div class="form-group">
+            <label for="ApplicationName">Application Name</label>
+            <input trim="blur" type="text" maxlength="100" [(ngModel)]="data.ApplicationName" name="ApplicationName" #ApplicationName="ngModel" class="form-control">
+          </div>
+
+        </div>
+        <div class="col-lg-3">
+          <div class="form-group">
+            <label for="StandardExportCount">Standard Export Count</label>
+            <input trim="blur" type="number" [(ngModel)]="data.StandardExportCount" name="StandardExportCount" #StandardExportCount="ngModel" class="form-control">
+          </div>
+
+          <div class="form-group">
+            <label for="MaximumExportCount">Maximum Export Count</label>
+            <input trim="blur" type="number" [(ngModel)]="data.MaximumExportCount" name="MaximumExportCount" #MaximumExportCount="ngModel" class="form-control">
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="form-group">
+            <label for="CSVExportCount">CSV Export Count</label>
+            <input trim="blur" type="number" [(ngModel)]="data.CSVExportCount" name="CSVExportCount" #CSVExportCount="ngModel" class="form-control">
+          </div>
+
+          <div class="form-group">
+            <label for="WarningExportCount">Warning Export Count</label>
+            <input trim="blur" type="number" [(ngModel)]="data.WarningExportCount" name="WarningExportCount" #WarningExportCount="ngModel" class="form-control">
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="form-group" [ngClass]="{'has-danger': loginLimit?.errors?.required}">
+            <label for="loginLimit">Log In Attempt Limit<span class="required-denote">*</span></label><br />
+            <input type="number" [(ngModel)]="data.LoginLimit" name="loginLimit" required #loginLimit="ngModel" class="form-control">
+          </div>
+
+        </div>
+      </div>
+
+
+    </form>
+  </div>
+</div>
+
+<footer class="panel-footer text-right bg-light lter">
+  <div class="float-left">
+    <small class="required">* denotes required field</small>
+  </div>
+  <button type="button" class="btn btn-success" [hidden]="appInfo.isReadonly && !appInfo.isUserReadonly" [disabled]="!SystemAdministrationForm.form.valid" [ladda]="isSaving" (click)="submit(SystemAdministrationForm.form.valid)">Save</button>
+  <button type="button" class="btn btn-dark" (click)="goBack()">Cancel</button>
+</footer>

@@ -1,0 +1,19 @@
+<div class="input-group {{className}}">
+  <input [(ngModel)]="filedata.FileName" type="text" class="form-control" [readonly]="true" />
+  <div class="input-group-prepend tootltip-group">
+    <button class="btn btn-primary" type="button" (click)="upload()" placement="top" ngbTooltip="Upload file">
+      <i class="fas fa-file-upload"></i>
+    </button>
+    <a *ngIf="isUploaded" placement="top" ngbTooltip="Download file" class="btn btn-success btn-download" (click)="download()">
+      <i class="fas fa-file-download"></i>
+    </a>
+    <button placement="top" ngbTooltip="Preview file" *ngIf="isUploaded" class="btn btn-primary" type="button" (click)="preview()">
+      <i class="far fa-file"></i>
+    </button>
+    <button ngbTooltip="Delete file"
+            placement="top" *ngIf="isUploaded" class="btn btn-danger last-child" type="button" (click)="remove()">
+      <i class="fa fa-times"></i>
+    </button>
+  </div>
+</div>
+

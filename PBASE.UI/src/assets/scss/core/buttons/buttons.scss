@@ -1,0 +1,587 @@
+//Buttons
+@import "../../variable";
+
+.btn-circle {
+  border-radius: 100%;
+  width: 40px;
+  height: 40px;
+  padding: 10px;
+
+  &.btn-sm {
+    width: 35px;
+    height: 35px;
+    padding: 8px 10px;
+    font-size: 14px;
+  }
+
+  &.btn-lg {
+    width: 50px;
+    height: 50px;
+    padding: 14px 15px;
+    font-size: 18px;
+    line-height: 23px;
+  }
+
+  &.btn-xl {
+    width: 70px;
+    height: 70px;
+    padding: 14px 15px;
+    font-size: 24px;
+  }
+}
+
+.btn-xs {
+  padding: .25rem .5rem;
+  font-size: 10px;
+}
+
+.btn-rounded {
+  border-radius: 60px;
+  padding: 7px 18px;
+
+  &.btn-lg {
+    padding: .75rem 1.5rem;
+  }
+
+  &.btn-sm {
+    padding: .25rem .5rem;
+    font-size: 12px;
+  }
+
+  &.btn-xs {
+    padding: .25rem .5rem;
+    font-size: 10px;
+  }
+
+  &.btn-md {
+    padding: 12px 35px;
+    font-size: 16px;
+  }
+}
+
+.btn-facebook {
+  color: $white;
+  background-color: #3b5998;
+
+  &:hover {
+    color: $white;
+  }
+}
+
+.btn-twitter {
+  color: $white;
+  background-color: #55acee;
+
+  &:hover {
+    color: $white;
+  }
+}
+
+.btn-linkedin {
+  color: $white;
+  background-color: #007bb6;
+
+  &:hover {
+    color: $white;
+  }
+}
+
+.btn-dribbble {
+  color: $white;
+  background-color: #ea4c89;
+
+  &:hover {
+    color: $white;
+  }
+}
+
+.btn-googleplus {
+  color: $white;
+  background-color: #dd4b39;
+
+  &:hover {
+    color: $white;
+  }
+}
+
+.btn-instagram {
+  color: $white;
+  background-color: #3f729b;
+}
+
+.btn-pinterest {
+  color: $white;
+  background-color: #cb2027;
+}
+
+.btn-dropbox {
+  color: $white;
+  background-color: #007ee5;
+}
+
+.btn-flickr {
+  color: $white;
+  background-color: #ff0084;
+}
+
+.btn-tumblr {
+  color: $white;
+  background-color: #32506d;
+}
+
+.btn-skype {
+  color: $white;
+  background-color: #00aff0;
+}
+
+.btn-youtube {
+  color: $white;
+  background-color: #bb0000;
+}
+
+.btn-github {
+  color: $white;
+  background-color: #171515;
+}
+
+.button-group {
+  .btn {
+    margin-bottom: 5px;
+    margin-right: 5px;
+  }
+}
+
+.no-button-group .btn {
+  margin-bottom: 5px;
+  margin-right: 0px;
+}
+
+.btn .text-active {
+  display: none;
+}
+
+.btn.active .text-active {
+  display: inline-block;
+}
+
+.btn.active .text {
+  display: none;
+}
+
+
+/*  Custom button Style  */
+.btn-layout {
+  background-color: $skin1;
+  border-color: $skin1;
+  color: $white;
+
+  &:focus, &.focus {
+    box-shadow: 0 0 0 0.2rem rgba(41, 98, 255, 0.5);
+  }
+
+  &:hover {
+    background-color: $skin1hover;
+  }
+}
+
+/*  button addon Style  */
+.btn-addon {
+  position: relative;
+  padding-left: 35px;
+  margin-top: 10px;
+  border: 0;
+
+  &:hover {
+    span {
+      border-right: 1px solid $skin1;
+    }
+  }
+
+  > span {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 27px;
+    background-color: $skin1hover;
+    border-right: 1px solid $skin1hover;
+    padding: 7px 0 0;
+  }
+}
+
+/*Custom button color*/
+/*______  Buttons  ________*/
+%button-success {
+  background-color: $secondary-color;
+  border-color: $secondary-color;
+  box-shadow: none !important;
+  transition: none !important;
+  color: $white;
+
+  @include hover-focus-active {
+    background-color: lighten( $secondary-color, 10% );
+    border-color: lighten( $secondary-color, 10% );
+    box-shadow: none !important;
+  }
+
+  &:not([disabled]):not(.disabled):active {
+    background-color: lighten( $secondary-color, 10% );
+    border-color: lighten( $secondary-color, 10% );
+    box-shadow: none !important;
+
+    &:focus, &.focus, &:active:focus, .active {
+      box-shadow: 0 0 0 0.2rem lighten( $secondary-color, 30% ) !important;
+    }
+  }
+
+  &:focus, &.focus, &:active:focus, .active {
+    box-shadow: 0 0 0 0.2rem lighten( $secondary-color, 30% ) !important;
+  }
+}
+
+.btn-primary,
+.btn-success,
+.btn-secondary {
+  @extend %button-success;
+}
+
+.btn-warning {
+  background-color: $btn-warning-background;
+  border-color: $btn-warning-background;
+  color: $white;
+
+  @include hover-focus-active {
+    background-color: darkin($btn-warning-background, 50%);
+    border-color: darkin($btn-warning-background, 50%);
+    color: $mat-grey;
+    box-shadow: none;
+  }
+
+  &:not([disabled]):not(.disabled):active {
+    background-color: darkin($btn-warning-background, 50%);
+    border-color: darkin($btn-warning-background, 50%);
+    color: $mat-grey;
+    box-shadow: none;
+  }
+}
+
+.btn-danger {
+  background-color: $btn-danger-background;
+  border-color: $btn-danger-background;
+
+  @include hover-focus-active {
+    background-color: lighten($btn-danger-background, 15%);
+    border-color: lighten($btn-danger-background, 15%);
+    box-shadow: none;
+  }
+
+  &:not([disabled]):not(.disabled):active {
+    background-color: lighten($btn-danger-background, 15%);
+    border-color: lighten($btn-danger-background, 15%);
+    box-shadow: none;
+  }
+
+  &:focus, &.focus, &:active:focus, .active {
+    box-shadow: 0 0 0 0.2rem lighten( $btn-danger-background, 35% ) !important;
+  }
+}
+
+.btn-inverse {
+  background-color: $brand-inverse;
+  border-color: $brand-inverse;
+
+  @include hover-focus-active {
+    background-color: lingten($brand-inverse, 10%);
+    border-color: lingten($brand-inverse, 10%);
+    box-shadow: none;
+  }
+
+  &:not([disabled]):not(.disabled):active {
+    background-color: lingten($brand-inverse, 10%);
+    border-color: lingten($brand-inverse, 10%);
+    box-shadow: none;
+  }
+
+  &:focus, &.focus, &:active:focus, .active {
+    box-shadow: 0 0 0 0.2rem lighten( $brand-inverse, 30% ) !important;
+  }
+}
+
+.btn-custom {
+  background-color: $primary-color;
+  border-color: $primary-color;
+  color: $white;
+
+  @include hover-focus-active {
+    background-color: $secondary-color;
+    border-color: $secondary-color;
+    color: $white;
+    box-shadow: none;
+    outline: none;
+  }
+
+  &:not([disabled]):not(.disabled):active {
+    background-color: $secondary-color;
+    border-color: $secondary-color;
+    color: $white;
+    box-shadow: none;
+    outline: none;
+  }
+
+  &:focus, &.focus, &:active:focus, .active {
+    box-shadow: 0 0 0 0.2rem lighten( $secondary-color, 30% ) !important;
+  }
+}
+
+.btn-dark,
+.btn-default {
+  background-color: $btn-default;
+  border-color: $btn-default;
+  color: $white;
+
+  @include hover-focus-active {
+    background-color: lighten($btn-default, 10%);
+    border-color: lighten($btn-default, 10%);
+    color: $white;
+    box-shadow: none;
+  }
+
+  &:not([disabled]):not(.disabled):active {
+    background-color: lighten($btn-default, 10%);
+    border-color: lighten($btn-default, 10%);
+    color: $white;
+    box-shadow: none;
+  }
+
+  &:focus, &.focus, &:active:focus, .active {
+    box-shadow: 0 0 0 0.2rem lighten( $btn-default, 30% ) !important;
+  }
+}
+
+.btn:disabled,
+.btn.disabled,
+.btn[disabled] {
+  background-color: $btn_disabled;
+  border-color: $btn_disabled;
+  cursor: not-allowed;
+  color: $white;
+  opacity: 1;
+
+  @include hover-focus-active {
+    background-color: $btn_disabled;
+    border-color: $btn_disabled;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+
+  &:not([disabled]):not(.disabled):active {
+    background-color: $btn_disabled;
+    border-color: $btn_disabled;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+}
+
+.ladda-button[data-style=expand-left][data-loading] {
+  padding-left: 56px;
+  position: relative;
+
+  .ladda-spinner {
+    opacity: 1;
+    left: 20px;
+    top: 20px;
+
+    div div div {
+      background-color: $white !important;
+    }
+  }
+}
+
+// Button
+.btn {
+  cursor: pointer;
+  border-radius: 5px !important;
+  letter-spacing: 0.02rem;
+  text-transform: none;
+  border-radius: 0.125rem;
+  padding: 0.532rem 1.5rem;
+}
+
+// Small button
+.btn-sm {
+  cursor: pointer;
+  letter-spacing: 0.02rem;
+  text-transform: none;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.765625rem;
+  line-height: 1.5;
+  border-radius: 1px;
+
+  & + .btn-sm {
+    margin-left: 3px;
+  }
+}
+
+// Extra smal button
+.btn-xs {
+  cursor: pointer;
+  border-radius: 1px;
+  letter-spacing: 0.02rem;
+  text-transform: none;
+  padding: .25rem .5rem;
+  font-size: 10px;
+
+  & + .btn-xs {
+    margin-left: 3px;
+  }
+}
+
+.btn-addon {
+  padding: 6px 10px 5px !important;
+  border-radius: 5px !important;
+  margin-bottom: 10px;
+  margin-right: 10px;
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  i {
+    width: 30px;
+    height: 30px;
+    margin: -6px -10px;
+    margin-right: 10px;
+    line-height: 30px;
+    position: relative;
+    float: left;
+    text-align: center;
+    background-color: rgba(0,0,0,0.1);
+    border-radius: 2px 0 0 2px;
+  }
+
+  @include hover-focus {
+    i {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+  }
+}
+
+.input-group {
+
+  .input-group-append {
+    height: 35px;
+
+    .btn,
+    button.ngx-material-timepicker-toggle {
+      border-radius: 0;
+      padding: 5px 15px;
+      background-color: $secondary-color;
+      border-color: $secondary-color;
+      color: $white;
+      border-radius: 0 !important;
+
+      .fa, .fas, .far {
+        font-size: 18px;
+      }
+
+      &:last-child {
+        border-top-right-radius: 5px !important;
+        border-bottom-right-radius: 5px !important;
+      }
+
+      @include hover-focus-active {
+        background-color: lighten( $secondary-color, 10% );
+        border-color: lighten( $secondary-color, 10% );
+      }
+
+      &:not([disabled]):not(.disabled):active {
+        background-color: lighten( $secondary-color, 10% );
+        border-color: lighten( $secondary-color, 10% );
+        box-shadow: none;
+      }
+    }
+
+    .btn-outline-secondary {
+      padding-top: 7px;
+    }
+  }
+}
+
+
+.btn-group {
+  .btn {
+    &.btn-null {
+      background-color: $white;
+      color: #c3c3c3;
+      border: 1px solid #a7a2a2;
+      text-align: center;
+      white-space: nowrap;
+      vertical-align: middle;
+      border-radius: 0px;
+      font-size: 14px;
+      padding: 6px 12px 7px 12px;
+      line-height: 1.5;
+      transition: color 0.50s ease-in-out,background-color 0.50s ease-in-out,border-color 0.50s ease-in-out,box-shadow 0.50s ease-in-out;
+
+      &:nth-child(2) {
+        color: $white;
+      }
+
+      .fa, .fas, .far {
+        margin-top: 9px;
+        display: inline-block;
+      }
+    }
+
+    &.btn-null-active {
+      background-color: $white;
+      color: #333333 !important;
+      border: 2px solid #a7a2a2;
+      text-align: center;
+      white-space: nowrap;
+      vertical-align: middle;
+      border-radius: 0px;
+      font-size: 14px;
+      padding: 6px 12px 7px 12px;
+      line-height: 1.5;
+      transition: color 0.50s ease-in-out,background-color 0.50s ease-in-out,border-color 0.50s ease-in-out,box-shadow 0.50s ease-in-out;
+    }
+
+    &.btn-on {
+      background-color: $white;
+      border: 2px solid $secondary-color;
+      color: $secondary-color;
+      border-bottom-right-radius: 0px;
+      border-top-right-radius: 0px;
+      font-size: 14px;
+      padding: 6px 12px 7px 12px;
+      line-height: 1.5;
+    }
+
+    &.btn-off {
+      background-color: $white;
+      border: 2px solid $btn-red;
+      color: $btn-red;
+      text-align: center;
+      border-bottom-left-radius: 0px;
+      border-top-left-radius: 0px;
+      font-size: 14px;
+      padding: 6px 12px 7px 12px;
+      line-height: 1.5;
+    }
+
+    &.border-radius-left {
+      border-bottom-left-radius: 4px;
+      border-top-left-radius: 4px;
+    }
+
+    &.border-radius-right {
+      border-bottom-right-radius: 4px;
+      border-top-right-radius: 4px;
+    }
+
+    .fa, .fas, .far {
+      font-size: 18px;
+    }
+  }
+}

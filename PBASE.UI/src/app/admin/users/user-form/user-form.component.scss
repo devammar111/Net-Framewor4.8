@@ -1,0 +1,25 @@
+ul.ui-select-choices.dropdown-menu {
+display: block;
+}
+
+.customLabelGroup {
+  label:first-child {
+    text-align: left;
+    .required-denote{
+      float:none;
+    }
+  }
+
+  label:last-child {
+    text-align: left;
+  }
+}
+
+.customFieldGroup {
+  .custom-switch {
+    margin-left: 0;
+    padding-left: 0;
+    margin-top: 0;
+    float: none;
+  }
+}

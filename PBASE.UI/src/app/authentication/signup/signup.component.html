@@ -1,0 +1,77 @@
+<div class="login-page h-100 w-100">
+  <div class="container h-100">
+    <div class="row justify-content-md-center h-100">
+      <div class="col-sm-12 col-md-8 col-lg-7 col-xl-6 align-self-center">
+        <div class="card card-block mb-0  p-5">
+          <div class="logo">
+            <img src="../../../assets/images/logo-light-text.png" alt="logo" />
+          </div>
+          <div class="auth-box auth-panel">
+            <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" class="form-horizontal">
+              <div class="has-danger"><p class="form-control-feedback"></p></div>
+              <div class="form-group" [ngClass]="{'has-danger': registrationForm.controls.title?.errors?.required}">
+                <label for="title">Title<span class="required-denote">*</span></label>
+                <ng-select [selectOnTab]="true" class="mb-15" bindLabel="LookupValue" bindValue="LookupId" [items]="titles" formControlName="title" [(ngModel)]="model.TitleId" required>
+                </ng-select>
+                <div class="form-control-feedback" *ngIf="registrationForm.controls.title?.errors?.required && submitted">Title is required!</div>
+              </div>
+
+              <div *ngIf="model.TitleId==493" class="form-group" [ngClass]="{'has-danger': registrationForm.controls.titleOther?.errors?.required}">
+                <label for="titleOther">Other Title <span class="required-denote">*</span></label>
+                <input trim="blur" type="text" required [(ngModel)]="model.Other" formControlName="titleOther" class="form-control">
+                <div class="form-control-feedback" *ngIf="registrationForm.controls.titleOther?.errors?.required && submitted">Other is required!</div>
+              </div>
+
+              <div class="form-group" [ngClass]="{'has-danger': registrationForm.controls.lastName?.errors?.required}">
+                <label for="lastName">Professional Surname<span class="required-denote">*</span></label>
+                <input trim="blur" type="text" [(ngModel)]="model.LastName" formControlName="lastName" class="form-control" required>
+                <div class="form-control-feedback" *ngIf="registrationForm.controls.lastName?.errors?.required && submitted">Professional Surname is required!</div>
+              </div>
+
+              <div class="form-group" [ngClass]="{'has-danger': registrationForm.controls.firstName?.errors?.required}">
+                <label for="firstName">Forenames in full<span class="required-denote">*</span></label>
+                <input trim="blur" type="text" [(ngModel)]="model.FirstName" formControlName="firstName" class="form-control" required>
+                <div class="form-control-feedback" *ngIf="registrationForm.controls.firstName?.errors?.required && submitted">Forenames is required!</div>
+              </div>
+
+              <div class="form-group" [ngClass]="{'has-danger': registrationForm.controls.reference?.errors?.required}">
+                <label for="reference">Bar Council/Law Society Number<span class="required-denote">*</span></label>
+                <input trim="blur" type="text" [(ngModel)]="model.Reference" formControlName="reference" class="form-control" required>
+                <div class="form-control-feedback" *ngIf="registrationForm.controls.reference?.errors?.required && submitted">Reference is required!</div>
+              </div>
+
+              <div class="form-group" [ngClass]="{'has-danger': registrationForm.controls.professionalEmail?.errors?.required}">
+                <label for="professionalEmail">Email Address<span class="required-denote">*</span></label>
+                <input trim="blur" type="email" email [(ngModel)]="model.ProfessionalEmail" formControlName="professionalEmail" class="form-control" required>
+                <div class="form-control-feedback" *ngIf="registrationForm.controls.professionalEmail?.errors?.required && submitted">Email Address is required!</div>
+              </div>
+
+              <div class="form-group" [ngClass]="{'has-danger': registrationForm.controls.isAgreeTermsCondition?.errors?.required}">
+                <div class="custom-control custom-checkbox">
+                  <input trim="blur" type="checkbox" class="custom-control-input" required formControlName="isAgreeTermsCondition" [(ngModel)]="model.IsAgreeTermsCondition" [checked]="model.IsAgreeTermsCondition" id="isAgreeTermsCondition">
+                  <label class="custom-control-label m-b-20" for="isAgreeTermsCondition">
+                    I agree to Terms & Conditions, <br />
+                    <a target="_blank" href="http://www.qcappointments.org/feedback/qca-terms-and-conditions/">click here for more information</a>
+                  </label>
+                  <div class="form-control-feedback" *ngIf="registrationForm.controls.isAgreeTermsCondition?.errors?.required && submitted">This field is required!</div>
+                </div>
+              </div>
+
+              <div class="form-group text-center mb-0">
+                <button class="btn btn-block btn-lg btn-custom" type="submit" [ladda]="isLoading" [disabled]="!registrationForm.valid">REGISTER</button>
+              </div>
+
+              <div class="form-group text-center mb-0">
+                <a [routerLink]="['/authentication/login']" class="link-style text-black">back to login page</a>
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+        <

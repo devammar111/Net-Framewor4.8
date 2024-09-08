@@ -1,0 +1,72 @@
+<!--<ngx-loading [show]="(user | json) == '{}'"></ngx-loading>-->
+<ngx-loading [show]="(data | json) == '{}'"></ngx-loading>
+<div [hidden]="(data | json) == '{}'">
+  <div class="card form-card">
+    <div class="card-header">
+      Profile
+    </div>
+    <div class="card-block">
+      <form novalidate #profileForm="ngForm" autocomplete="off">
+        <app-unsaved-changes [formName]="profileForm"></app-unsaved-changes>
+        <div class="row">
+          <div class="col-lg-8">
+            <div class="row">
+              <div class="col-xs-12 col-sm-6 col-lg-4">
+                <div class="form-group" [ngClass]="{'has-danger': firstName?.errors?.required}">
+                  <label for="firstName">First Name <span class="required-denote">*</span></label>
+                  <input trim="blur" type="text" [(ngModel)]="data.FirstName" #firstName="ngModel" class="form-control" name="firstName" required>
+                  <div class="form-control-feedback" *ngIf="profileForm.controls.firstName?.errors?.required && submitted">First Name is required!</div>
+                </div>
+                <div class="form-group" [ngClass]="{'has-danger': lastName?.errors?.required}">
+                  <label for="lastName">Last Name <span class="required-denote">*</span></label>
+                  <input trim="blur" type="text" [(ngModel)]="data.LastName" #lastName="ngModel" class="form-control" name="lastName" required>
+                  <div class="form-control-feedback" *ngIf="profileForm.controls.lastName?.errors?.required && submitted">Last Name is required!</div>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-6 col-lg-4">
+                <div class="form-group">
+                  <label for="userName">Username</label>
+                  <input trim="blur" type="text" [(ngModel)]="data.UserName" #userName="ngModel" class="form-control" name="userName" readonly>
+                </div>
+                <div class="form-group">
+                  <label for="email">Email Address</label>
+                  <input trim="blur" type="email" [(ngModel)]="data.Email" #email="ngModel" class="form-control" name="email" readonly>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-6 col-lg-4">
+                <div class="form-group">
+                  <label for="assignedRoles">User Type</label>
+                  <ng-select [selectOnTab]="true" [disabled]="true" bindLabel="LookupValue" bindValue="LookupId" groupBy="GroupBy" [items]="data.vw_lookuprole" name="assignedRoles" #assignedRoles="ngModel" [(ngModel)]="data.UserTypeId">
+                  </ng-select>
+                </div>
+                <div class="form-group">
+                  <label for="userTypeId">User Group</label>
+                  <ng-select [selectOnTab]="true" [disabled]="true" [items]="data.vw_lookupusergroups" bindLabel="LookupValue" bindValue="LookupId" groupBy="GroupBy" [(ngModel)]="data.UserGroupId" name="userTypeId" #userTypeId="ngModel">
+                  </ng-select>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="form-group" [ngClass]="{'has-danger': attachment?.errors?.required}">
+              <label>Profile Picture </label>
+              <app-image-picker name="attachment" #attachment="ngModel" [fpOptions]="fileOptions" ngDefaultControl [fileHandle]="data.AttachmentFileHandle" [(ngModel)]="data.AttachmentFileHandle" (notify)="onNotify($event)"></app-image-picker>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <footer class="panel-footer text-right lter">
+    <div class="float-left">
+      <small class="required">* denotes required field</small>
+    </div>
+    <button type="submit" [ladda]="isSaving" class="btn btn-success" [disabled]="!profileForm.form.valid" (click)="submit(profileForm.form.valid)">Save</button>
+    <button type="button" class="btn btn-dark" (click)="goBack()">Close</button>
+  </footer>
+</div>
+
+<app-agreement-pt2-grid></app-agreement-pt2-grid>

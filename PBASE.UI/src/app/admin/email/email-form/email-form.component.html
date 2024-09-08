@@ -1,0 +1,85 @@
+<ngx-loading [show]="(data | json) == '{}'"></ngx-loading>
+<div class="card form-card">
+  <div class="card-header">
+    {{heading}}
+  </div>
+  <div class="card-block">
+    <form novalidate #emailForm="ngForm">
+      <app-unsaved-changes [formName]="emailForm"></app-unsaved-changes>
+      <div class="row">
+        <div class="col-lg-3">
+          <div class="form-group">
+            <label for="toAddress">To</label>
+            <input trim="blur" type="text" [(ngModel)]="data.ToAddress" name="toAddress" #toAddress="ngModel" class="form-control" readonly>
+          </div>
+          <div class="form-group">
+            <label for="fromAddress">From</label>
+            <input trim="blur" type="text" [(ngModel)]="data.FromAddress" name="fromAddress" #fromAddress="ngModel" class="form-control" readonly>
+          </div>
+          <div class="form-group">
+            <label class="control-label" for="RequestedDate">Requested Date</label>
+            <div class="input-group" (clickOutside)="RequestedDatePicker.close()">
+              <input disabled class="form-control" #RequestedDatePicker="ngbDatepicker" id="RequestedDate"
+                     name="RequestedDate" [(ngModel)]="RequestedDateField" #RequestedDate="ngModel" ngbDatepicker [ngClass]="{'is-invalid': RequestedDate?.invalid}">
+              <div class="input-group-append">
+                <button class="btn" (click)="RequestedDatePicker.toggle()" type="button"><i class="far fa-calendar-alt"></i></button>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="sentDate">Sent Date</label>
+            <div class="input-group" (clickOutside)="SentDatePicker.close()">
+              <input disabled class="form-control" #SentDatePicker="ngbDatepicker" id="SentDate"
+                     name="SentDate" [(ngModel)]="SentDateField" #SentDate="ngModel" ngbDatepicker [ngClass]="{'is-invalid': SentDate?.invalid}">
+              <div class="input-group-append">
+                <button class="btn" (click)="SentDatePicker.toggle()" type="button"><i class="far fa-calendar-alt"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="form-group">
+            <label for="status">Status</label>
+            <input trim="blur" type="text" [(ngModel)]="data.Status" name="status" #status="ngModel" class="form-control" readonly>
+          </div>
+          <div class="form-group">
+            <label for="emailType">Email Type</label>
+            <input trim="blur" type="text" [(ngModel)]="data.EmailType" name="emailType" #emailType="ngModel" class="form-control" readonly>
+          </div>
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <input trim="blur" type="text" [(ngModel)]="data.Subject" name="subject" #subject="ngModel" class="form-control" readonly>
+          </div>
+          <div class="form-group">
+            <label for="userFullName">Created By</label>
+            <input trim="blur" type="text" [(ngModel)]="data.UserFullName" name="userFullName" #userFullName="ngModel" class="form-control" readonly>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="form-group emailBody">
+            <label for="body">Body</label>
+            <angular-editor id="body" name="body" #body="ngModel" [(ngModel)]="data.Body" [config]="editorConfig"></angular-editor>
+          </div>
+          <div *ngIf="data.EmailAttachments?.length != 0" id="attachfiles" class="form-group">
+            <label><b>Attachments</b></label>
+            <ul>
+              <li *ngFor="let attachFile of data.EmailAttachments">
+                <a href={{getsrc(attachFile.AttachmentFileHandle)}} target="_blank">
+                  {{attachFile.AttachmentFileName}}
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<footer class="panel-footer text-right bg-light lter">
+  <div class="float-left">
+    <small class="required">* denotes required field</small>
+  </div>
+  <button type="button" class="btn btn-success" [hidden]="appInfo.isReadonly && !appInfo.isUserReadonly" [ladda]="isSaving" (click)="resend(emailForm.form.valid)">Resend</button>
+  <button type="button" class="btn btn-dark" (click)="goBack()">Cancel</button>
+</footer>

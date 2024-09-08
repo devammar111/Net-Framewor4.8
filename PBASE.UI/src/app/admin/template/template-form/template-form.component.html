@@ -1,0 +1,65 @@
+<ngx-loading [show]="(data | json) == '{}'"></ngx-loading>
+<div class="card form-card">
+  <div class="card-header">
+    {{heading}}
+  </div>
+  <div class="card-block">
+    <form novalidate #templateForm="ngForm">
+      <app-unsaved-changes [formName]="templateForm"></app-unsaved-changes>
+      <div class="row">
+        <div class="col-lg-3">
+          <div class="form-group" [ngClass]="{'has-danger': templateType?.errors?.required}">
+            <label for="templateType">Template Type<span class="required-denote">*</span></label>
+            <ng-select [selectOnTab]="true" [items]="data.vw_LookupTemplateTypes" bindLabel="LookupValue" bindValue="LookupId" groupBy="GroupBy" (ngModelChange)="onTemplateTypeChange($event)" [(ngModel)]="data.TemplateTypeId" #templateType="ngModel" name="templateType" required>
+            </ng-select>
+          </div>
+          <div class="form-group" [ngClass]="{'has-danger': description?.errors?.required}">
+            <label for="description">Description<span class="required-denote">*</span></label>
+            <input trim="blur" type="text" maxlength="2000" [(ngModel)]="data.Description" name="description" #description="ngModel" class="form-control" required>
+          </div>
+          <div class="form-group" [ngClass]="{'has-danger': attachment?.errors?.required}">
+            <label>Template File<span class="required-denote"> *</span></label>
+            <app-file-picker name="attachment" #attachment="ngModel" required ngDefaultControl [fileHandle]="data.AttachmentFileHandle" [(ngModel)]="data.AttachmentFileHandle" (notify)="onNotify($event)"></app-file-picker>
+          </div>
+        </div>
+
+        <div class="col-lg-3">
+          <div class="form-group">
+            <label for="types">Template Tag(s)</label>
+            <div class="form-control h-auto min-h-35">
+              <div class="d-inline-block" *ngFor="let TemplateTag of TemplateTags">
+                {{TemplateTag.LookupValue}}
+                <div class="custom-tooltip">
+                  <i class="far fa-question-circle"></i>
+                  <div class="top">
+                    <h5>{{TemplateTag.LookupExtraText}}</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<footer class="panel-footer text-right bg-light lter">
+  <div class="float-left">
+    <small class="required">* denotes required field</small>
+  </div>
+  <button type="button" class="btn btn-success" [hidden]="hideSave || (appInfo.isReadonly && !appInfo.isUserReadonly)" [disabled]="!templateForm.form.valid" [ladda]="isSaving" (click)="submit(templateForm.form.valid)">Save</button>
+  <button class="btn btn-danger"
+          [disabled]="appInfo.isUserReadonly"
+          [hidden]="!queryParams.id || appInfo.isDeleteHidden"
+          [ladda]="isDeleting"
+          mwlConfirmationPopover
+          popoverTitle="Delete Template"
+          popoverMessage="Are you sure you want to delete this Template?"
+          placement="top"
+          (confirm)="delete()"
+          (cancel)="true">
+    Delete
+  </button>
+  <button type="button" class="btn btn-dark" (click)="goBack()">Cancel</button>
+</footer>

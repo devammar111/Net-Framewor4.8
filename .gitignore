@@ -1,0 +1,15 @@
+/.vs
+/packages
+/PBASE.Entity/obj
+/PBASE.Entity/bin
+/PBASE.Repository/bin
+/PBASE.Repository/obj
+/PBASE.Service/bin
+/PBASE.Service/obj
+/PBASE.WebAPI/obj
+/PBASE.WebAPI/bin
+/PBASE.UI/obj/Uat
+/PBASE.UI/obj
+/PBASE.UI/bin
+/PBASE.UI/package-lock.json
+/PBASE.UI/*.user

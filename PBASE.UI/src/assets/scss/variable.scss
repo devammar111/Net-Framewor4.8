@@ -1,0 +1,330 @@
+/*******************************/
+// Custom Variables
+/*******************************/
+
+$primary-color: #74bf53 !default;
+$secondary-color: #65b840;
+$border-color: #dbdbdb;
+$gray: #a6a6a6;
+$dark-grey: #808080;
+$mat-grey: #424242;
+$gray-light: #636c72 !default;
+$gray-mid: #f3f3f3 !default;
+$gray-lighter: #eceeef !default;
+$gray-lightest: #f7f7f9 !default;
+$menu-hover: #668800;
+$default-color: #e6e6e6;
+$border-rounded: 7px;
+$border-rounded-sm: 5px;
+
+
+// Custom Button Colors
+$btn-danger-background: #ff0000 !default;
+$btn-warning-background: #ffbc34!default;
+$btn-success-background: #6baf3e !default;
+$brand-inverse: #000;
+$active-color: #6d6d6d;
+$inactive-color: #999999;
+$btn_disabled: #bbbbbb;
+$btn-default: #808080;
+$btn-red: #e52e2d;
+$btn-green: #57a170;
+
+// breadcrumb
+$breadcrumb-inactive: #999999;
+$breadcrumb-active: $active-color;
+
+$input-disable: #dbdbdb;
+
+$light-gray-color: #f2f2f2;
+$transition-duration: 1s !default;
+$grid-header-height: 50px;
+// Table color
+/*Theme Colors*/
+$themecolor: $primary-color;
+$themecolor-dark: #028ee1;
+$themecolor-alt: #26c6da;
+$theme-light: #fff;
+$theme-dark: #212529;
+
+$skin1: $primary-color;
+$skin2: #fe5419;
+$skin3: #00b0ff;
+$skin4: #6659f7;
+$skin5: #414755;
+$skin6: #fff;
+
+// Text colors
+$primary: $primary-color !default;
+$primary-light: $primary-color !default;
+$secondary: $secondary-color !default;
+
+$skin1hover: $secondary;
+/*Topbar Colors*/
+
+$topbar: $theme-light;
+$topbar-height: 64px;
+$topbar-navlink-padding: 0px 14px;
+$topbar-navlink-font-size: 0.875rem;
+$topbar-navlink-height: 76px;
+$topbar-navbrand-padding: 0 10px 0 10px;
+
+/*Sidebar Colors*/
+
+$sidebar: $theme-light;
+$sidebar-alt: #e8eff0;
+$sidebar-text: $primary-color;
+$sidebar-icons: $primary-color;
+$sidebar-text-dark: #212529;
+$sidebar-icons-dark: #4F5467;
+
+$sidebar-width-full: 250px;
+$sidebar-width-iconbar: 180px;
+$sidebar-width-mini: 100px;
+
+/*Boxed layout width*/
+
+$boxed-width: 1200px;
+$sidebar-expane-width: 249px;
+$sidebar-min-height: 77px;
+$sidebar-mini-width: 99px;
+/*Shadow*/
+
+$shadow: 1px 0px 20px rgba(0, 0, 0, 0.08);
+
+/*transitions*/
+
+$transitions: 0.2s ease-in;
+
+/*Dark transparent bg*/
+
+$transparent-dark-bg: rgba(0, 0, 0, 0.05);
+
+$lft: left;
+$rgt: right;
+$card-alt: #e4e9ef;
+
+%square {
+  border-radius: 0px;
+}
+
+
+%rotate45 {
+  transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+}
+
+%rotate--135 {
+  -webkit-transform: rotate(-135deg) translate(0, -50%);
+  -ms-transform: rotate(-135deg) translate(0, -50%);
+  -o-transform: rotate(-135deg) translate(0, -50%);
+  transform: rotate(-135deg) translate(0, -50%);
+}
+
+%rotate270deg {
+  -webkit-transform: rotate(270deg);
+  -moz-transform: rotate(270deg);
+  -ms-transform: rotate(270deg);
+  -o-transform: rotate(270deg);
+  transform: rotate(270deg);
+}
+
+%rotate00deg {
+  -webkit-transform-origin: 0 0;
+  -moz-transform-origin: 0 0;
+  -ms-transform-origin: 0 0;
+  -o-transform-origin: 0 0;
+  transform-origin: 0 0;
+}
+/*******************************/
+// Bootstrap overrides
+/*******************************/
+/**
+ * Table Of Content
+ *
+ *  1. Color system
+ *  2. Options
+ *  3. Body
+ *  4. Typography
+ *  5. Breadcrumbs
+ *  6. Cards
+ *  7. Dropdowns
+ *  8. Buttons
+ *  9. Typography
+ *  10. Progress bars
+ *  11. Tables
+ *  12. Forms
+ *  14. Component
+ */
+//
+// Color system
+//
+$white: #fff !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #a1aab2 !default;
+$gray-600: #6c757d !default;
+$gray-700: #4F5467 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+$black: #000 !default;
+
+$blue: #2962FF !default;
+$indigo: #6610f2 !default;
+$purple: #7460ee !default;
+$pink: #e83e8c !default;
+$red: #f62d51 !default;
+$orange: #fb8c00 !default;
+$yellow: #ffbc34 !default;
+$green: #36bea6 !default;
+$teal: #20c997 !default;
+$cyan: #4fc3f7 !default;
+$primary: #7460ee !default;
+$text-muted: $gray-500 !default;
+
+$colors: ( blue: $blue, indigo: $indigo, purple: $purple, pink: $pink, red: $red, orange: $orange, yellow: $yellow, green: $green, teal: $teal, cyan: $cyan, white: $white, gray: $gray-600, gray-dark: $gray-800);
+
+$primary: $blue !default;
+$secondary: $gray-600 !default;
+$success: $green !default;
+$info: $primary !default;
+$warning: $yellow !default;
+$danger: $red !default;
+$light: $gray-100 !default;
+$dark: $gray-800 !default;
+$cyan: $cyan !default;
+$orange: $orange !default;
+$theme-colors: () !default;
+$theme-colors: map-merge(( "primary": $primary, "secondary": $secondary, "success": $success, "info": $info, "warning": $warning, "danger": $danger, "light": $light, "dark": $dark, "cyan": $cyan, "orange": $orange, "purple": $purple), $theme-colors);
+
+// Quickly modify global styling by enabling or disabling optional features.
+
+$enable-caret: true !default;
+$enable-rounded: true !default;
+$enable-shadows: false !default;
+$enable-gradients: false !default;
+$enable-transitions: true !default;
+$enable-hover-media-query: false !default;
+$enable-grid-classes: true !default;
+$enable-print-styles: true !default;
+
+// Body
+//
+// Settings for the  element.
+
+$main-body-bg: #fff!default;
+$body-bg: #eef5f9;
+$body-color: #3e5569 !default;
+$grid-gutter-width: 20px !default;
+
+// Typography
+//
+// Font, line-height, and color for body text, headings, and more.
+
+$font-size-base: 0.875rem;
+$font-family-sans-serif: 'Nunito Sans', sans-serif !default;
+$font-weight-light: 300 !default;
+$font-weight-normal: 400 !default;
+$font-weight-medium: 600 !default;
+$font-weight-bold: 800 !default;
+
+$h1-font-size: 36px !default;
+$h2-font-size: 30px !default;
+$h3-font-size: 24px !default;
+$h4-font-size: 18px !default;
+$h5-font-size: 16px !default;
+$h6-font-size: 14px !default;
+
+$headings-margin-bottom: (1rem / 2) !default;
+$headings-font-weight: 700 !default;
+$headings-color: inherit !default;
+
+// Breadcrumbs
+
+$breadcrumb-bg: $body-bg;
+$breadcrumb-margin-bottom: 1.5rem;
+
+// Cards
+
+$card-border-width: 0px!default;
+$card-border-color: transparent!default;
+$card-border-radius: 0px !default;
+
+// Dropdowns
+
+$dropdown-item-padding-x: 1rem !default;
+$dropdown-item-padding-y: .65rem !default;
+$dropdown-border-color: $gray-200;
+$dropdown-divider-bg: $gray-100;
+
+// Buttons
+
+$btn-secondary-border: $gray-300;
+
+// Progress bars
+
+$progress-bg: $gray-100;
+
+// Tables
+
+$table-bg-accent: $gray-100;
+$table-bg-hover: $gray-100;
+$table-hover-bg: $gray-100 !default;
+$table-cell-padding: 1rem !default;
+$table-bg-level: -10 !default;
+$table-bg-level2: 1 !default;
+$table-bg-level3: -5 !default;
+
+// Components
+
+$component-active-color: $white !default;
+$component-active-bg: $themecolor !default;
+$badge-pill-padding-x: .2em !default;
+$badge-pill-padding-y: 1em !default;
+
+// Forms
+
+$input-group-addon-bg: $gray-100;
+$input-border-color: $gray-200;
+$input-group-addon-border-color: $gray-200;
+$input-btn-focus-color: rgba(0, 0, 0, .25) !default;
+$input-focus-border-color: rgba(0, 0, 0, 0.25) !default;
+$custom-control-indicator-active-bg: rgba(0, 0, 0, 35%) !default;
+$custom-select-indicator: url(../../assets/images/custom-select.png)!default;
+$input-btn-focus-box-shadow: transparent !default;
+$custom-select-focus-box-shadow: transparent !default;
+$custom-select-indicator: str-replace(url(""), "%23") !default;
+
+//
+// Define common padding and border radius sizes and more.
+
+$border-width: 1px !default;
+$border-color: #e4e4e4 !default;
+$border-radius: 2px !default;
+$border-radius-lg: 2px !default;
+$border-radius-sm: 1px !default;
+
+// Progress bars
+
+$progress-height: 5px !default;
+
+//Tabs
+
+$nav-tabs-link-active-bg: $white !default;
+
+// Grid breakpoints
+//
+// Define the minimum dimensions at which your layout will change,
+// adapting to different screen sizes, for use in media queries.
+
+$grid-breakpoints: ( xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1600px) !default;
+
+//Navbar
+
+$navbar-dark-color: rgba($white, .8) !default;
+$navbar-dark-hover-color: rgba($white, 1) !default;

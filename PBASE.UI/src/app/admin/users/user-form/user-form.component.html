@@ -1,0 +1,87 @@
+<ngx-loading [show]="(data | json) == '{}'"></ngx-loading>
+<div class="card form-card">
+  <div class="card-header">
+    {{heading}}
+  </div>
+  <div class="card-block">
+    <form [formGroup]="userForm" novalidate>
+      <app-unsaved-changes [formName]="userForm"></app-unsaved-changes>
+      <div class="row">
+        <div class="col-lg-3">
+          <div class="form-group">
+            <label for="userName">Username<span class="required-denote">*</span></label>
+            <input trim="blur" type="text" maxlength="256" [(ngModel)]="data.UserName" formControlName="userName" class="form-control" required>
+            <div class="form-control-feedback" *ngIf="userForm.controls.userName?.errors?.required && submitted">Username is required!</div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address<span class="required-denote">*</span></label>
+            <input trim="blur" type="text" maxlength="256" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" [(ngModel)]="data.Email" formControlName="email" class="form-control" required>
+            <div class="form-control-feedback" *ngIf="userForm.controls.email?.errors?.required && submitted">Email Address is required!</div>
+            <div class="form-control-feedback" *ngIf="userForm.controls.email?.invalid && submitted && data.Email">Email address is not valid!</div>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="form-group">
+            <label for="firstName">First Name<span class="required-denote">*</span></label>
+            <input trim="blur" type="text" maxlength="50" [(ngModel)]="data.FirstName" formControlName="firstName" class="form-control" required>
+            <div class="form-control-feedback" *ngIf="userForm.controls.firstName?.errors?.required && submitted">First Name is required!</div>
+          </div>
+          <div class="form-group">
+            <label for="lastName">Last Name<span class="required-denote">*</span></label>
+            <input trim="blur" type="text" maxlength="50" [(ngModel)]="data.LastName" formControlName="lastName" class="form-control" required>
+            <div class="form-control-feedback" *ngIf="userForm.controls.lastName?.errors?.required && submitted">Last Name is required!</div>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="form-group">
+            <label for="assignedRoles">User Type<span class="required-denote">*</span></label>
+            <ng-select [selectOnTab]="true" bindLabel="LookupValue" bindValue="LookupId" groupBy="GroupBy" [items]="data.vw_lookuprole" formControlName="assignedRoles" (ngModelChange)="onChangeUserType($event)" [(ngModel)]="data.UserTypeId" required>
+            </ng-select>
+            <div class="form-control-feedback" *ngIf="userForm.controls.assignedRoles?.errors?.required && submitted">User Type is required!</div>
+          </div>
+          <div class="form-group">
+            <label for="userTypeId">User Group<span class="required-denote">*</span></label>
+            <ng-select [selectOnTab]="true" [items]="allUserGroups" bindLabel="LookupValue" bindValue="LookupId" groupBy="GroupBy" [(ngModel)]="data.UserGroupId" formControlName="userGroup" required>
+            </ng-select>
+            <div class="form-control-feedback" *ngIf="userForm.controls.userGroup?.errors?.required && submitted">User Group is required!</div>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="form-group">
+            <label for="IsReadOnly">Read Only<span class="required-denote">*</span></label>
+            <div class="form-group customFieldGroup">
+              <pb-switch class="required-denote custom-switch" (change)="onIsReadOnly($event)" [(ngModel)]="IsReadOnly" formControlName="IsReadOnly" labelOn="Yes" labelOff="No"></pb-switch>
+              <div class="form-control-feedback" *ngIf="userForm.controls.IsReadOnly?.errors?.required && submitted">Read Only is required!</div>
+
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="IsDeleteDisabled">Delete Disabled<span class="required-denote">*</span></label>
+            <div class="form-group customFieldGroup">
+              <pb-switch class="required-denote custom-switch" (change)="onIsDeleteDisabled($event)" [(ngModel)]="IsDeleteDisabled" formControlName="IsDeleteDisabled" labelOn="Yes" labelOff="No"></pb-switch>
+              <div class="form-control-feedback" *ngIf="userForm.controls.IsDeleteDisabled?.errors?.required && submitted">Delete Option Disabled is required!</div>
+
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="accountClosed" [hidden]="!queryParams.id">Account Closed<span class="required-denote">*</span></label>
+            <div class="form-group customFieldGroup">
+              <pb-switch [hidden]="!queryParams.id" class="required-denote custom-switch" (change)="onLockoutEnabled($event)" [(ngModel)]="LockoutEnabled" formControlName="accountClosed" labelOn="Yes" labelOff="No"></pb-switch>
+              <div class="form-control-feedback" *ngIf="userForm.controls.accountClosed?.errors?.required && submitted">Account Closed is required!</div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<footer class="panel-footer text-right lter">
+  <div class="float-left">
+    <small class="required">* denotes required field</small>
+  </div>
+  <button class="btn btn-primary" *ngIf="queryParams.id && showChangePassword" [hidden]="appInfo.isReadonly && !appInfo.isUserReadonly" [disabled]="appInfo.isUserReadonly" (click)="resendEmail()">Resend Get Started Email</button>
+  <button type="button" [ladda]="isSaving" [hidden]="appInfo.isReadonly && !appInfo.isUserReadonly" [disabled]="!userForm.valid" (click)="submit(userForm.valid)" class="btn btn-success">Save</button>
+  <button type="button" class="btn btn-dark" (click)="goBack()">Cancel</button>
+</footer>

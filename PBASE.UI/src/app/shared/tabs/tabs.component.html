@@ -1,0 +1,10 @@
+﻿<div class="tab-container">
+  <div class="fix-nav-tabs">
+    <ul class="nav nav-tabs">
+      <li class="nav-item" *ngFor="let tab of tabs" [tab]="tab" tabLink></li>
+    </ul>
+  </div>
+  <div class="tab-body">
+    <router-outlet></router-outlet>
+  </div>
+</div>

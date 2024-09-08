@@ -1,0 +1,35 @@
+<ngx-loading [show]="isLoading"></ngx-loading>
+<div class="card form-card">
+  <div class="card-header">
+    Objects
+  </div>
+  <div class="card-block">
+    <form novalidate #optionsForm="ngForm">
+      <app-unsaved-changes [formName]="optionsForm"></app-unsaved-changes>
+      <div class="row">
+        <div class="col-lg-3">
+          <div class="form-group">
+            <label for="menuOption">Object Name</label>
+            <input trim="blur" type="text" [(ngModel)]="data.MenuOption" name="menuOption" #menuOption="ngModel" class="form-control" readonly>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="form-group" [ngClass]="{'has-danger': aspNetRoleIds?.errors?.required}">
+            <label for="types">Role(s)<span class="required-denote">*</span></label>
+            <ng-select [selectOnTab]="true" [multiple]="true" bindLabel="LookupValue" bindValue="LookupId" groupBy="GroupBy" #aspNetRoleIds="ngModel" [hideSelected]="true" (change)="sortRoles($event)" [items]="data.allRoles" name="aspNetRoleIds" [(ngModel)]="data.AspNetRoleIds" placeholder="No Role" required>
+            </ng-select>
+            <div class="form-control-feedback" *ngIf="aspNetRoleIds?.errors?.required && submitted">Role is required!</div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<footer class="panel-footer text-right bg-light lter">
+  <div class="float-left">
+    <small class="required">* denotes required field</small>
+  </div>
+  <button type="button" class="btn btn-success" *ngIf="(!appInfo.isReadonly || appInfo.isUserReadonly) && !optionTab.isReadonly" [disabled]="!optionsForm.form.valid" [ladda]="isSaving" (click)="submit(optionsForm.form.valid)">Save</button>
+  <button type="button" class="btn btn-dark" (click)="goBack()">Cancel</button>
+</footer>
